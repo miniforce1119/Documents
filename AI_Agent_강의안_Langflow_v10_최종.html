@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Agent 제작 강의안</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Document Style Reset to look like MS Word */
+      body {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 40px 80px;
+        font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+        font-size: 11pt;
+        line-height: 1.6;
+        color: #000;
+        background-color: #fff;
+      }
+
+      /* Typography */
+      h1 {
+        font-size: 24pt;
+        color: #1a3c6e;
+        border-bottom: 2px solid #1a3c6e;
+        padding-bottom: 10px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        page-break-before: always;
+      }
+
+      h1:first-of-type {
+        page-break-before: auto;
+        margin-top: 0;
+      }
+
+      h2 {
+        font-size: 16pt;
+        color: #2c5282;
+        margin-top: 35px;
+        margin-bottom: 20px;
+        background-color: #f0f4f8;
+        padding: 8px 15px;
+        border-left: 5px solid #2c5282;
+      }
+
+      h3 {
+        font-size: 13pt;
+        color: #444;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        font-weight: bold;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+      }
+
+      h4 {
+        font-size: 11pt;
+        font-weight: bold;
+        color: #2d3748;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-bottom: 15px;
+        text-align: justify;
+      }
+
+      /* Lists */
+      ul,
+      ol {
+        margin-bottom: 20px;
+        padding-left: 25px;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      /* Tables */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 10.5pt;
+      }
+
+      th {
+        background-color: #f1f5f9;
+        color: #1a202c;
+        font-weight: bold;
+        text-align: left;
+        padding: 12px;
+        border: 1px solid #cbd5e0;
+      }
+
+      td {
+        padding: 12px;
+        border: 1px solid #cbd5e0;
+        vertical-align: top;
+      }
+
+      /* Images */
+      img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #e2e8f0;
+        margin: 20px 0;
+        display: block;
+      }
+
+      .img-caption {
+        text-align: center;
+        font-size: 9pt;
+        color: #718096;
+        margin-top: -15px;
+        margin-bottom: 30px;
+        font-style: italic;
+      }
+
+      /* Info Boxes */
+      .box {
+        border: 1px solid;
+        padding: 15px;
+        margin: 20px 0;
+        background-color: #fff;
+        border-radius: 4px;
+      }
+
+      .box-title {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 11.5pt;
+      }
+
+      .box-tip {
+        border-color: #bee3f8;
+        background-color: #ebf8ff;
+        color: #2c5282;
+      }
+      .box-tip .box-title {
+        color: #2b6cb0;
+      }
+
+      .box-warning {
+        border-color: #fbd38d;
+        background-color: #fffff0;
+        color: #744210;
+      }
+      .box-warning .box-title {
+        color: #975a16;
+      }
+
+      .box-important {
+        border-color: #feb2b2;
+        background-color: #fff5f5;
+        color: #9b2c2c;
+      }
+      .box-important .box-title {
+        color: #c53030;
+      }
+
+      .box-success {
+        border-color: #9ae6b4;
+        background-color: #f0fff4;
+        color: #22543d;
+      }
+      .box-success .box-title {
+        color: #2f855a;
+      }
+
+      /* Step Number */
+      .step-num {
+        display: inline-block;
+        background-color: #4a5568;
+        color: white;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 24px;
+        font-size: 10pt;
+        margin-right: 8px;
+        font-weight: bold;
+      }
+
+      /* Code Block */
+      .code-block {
+        background-color: #f7fafc;
+        border: 1px solid #e2e8f0;
+        padding: 15px;
+        font-family: 'Consolas', monospace;
+        font-size: 10pt;
+        overflow-x: auto;
+        margin: 15px 0;
+        border-left: 4px solid #4a5568;
+      }
+
+      /* Cover Page */
+      .cover-page {
+        text-align: center;
+        padding-top: 150px;
+        padding-bottom: 100px;
+        page-break-after: always;
+      }
+
+      .cover-title {
+        font-size: 32pt;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #1a3c6e;
+      }
+
+      .cover-subtitle {
+        font-size: 18pt;
+        color: #4a5568;
+        margin-bottom: 80px;
+      }
+
+      .cover-info {
+        margin-top: 100px;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 30px;
+        font-size: 12pt;
+        color: #2d3748;
+      }
+
+      /* TOC */
+      .toc-link {
+        display: block;
+        padding: 8px 0;
+        color: #2c5282;
+        text-decoration: none;
+        border-bottom: 1px dotted #e2e8f0;
+      }
+      .toc-link:hover {
+        color: #1a3c6e;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Cover Page -->
+    <div class="cover-page">
+      <div class="cover-title">누구나 쉽게 만드는 AI Agent</div>
+      <div class="cover-subtitle">Langflow와 함께하는 노코드 AI 입문</div>
+      <div class="cover-info">
+        <p><strong>강의 대상:</strong> SW 비전공자 및 입문자</p>
+        <p><strong>과정 목표:</strong> 코딩 없이 나만의 AI 에이전트 만들기 (5일 과정)</p>
+        <p><strong>버전:</strong> v7.0 (최종본)</p>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <h1 style="margin-top: 0">목 차</h1>
+    <div style="margin-bottom: 50px">
+      <a href="#intro" class="toc-link">강의 소개</a>
+      <a href="#part1" class="toc-link">Part 1. AI 기초 이해하기</a>
+      <a href="#part2" class="toc-link">Part 2. 개발 환경 준비 (실습)</a>
+      <a href="#part3" class="toc-link">Part 3. Langflow 시작하기 (기본)</a>
+      <a href="#part4" class="toc-link">Part 4. 나만의 AI Agent 만들기 (심화)</a>
+      <a href="#part5" class="toc-link">Part 5. 사내 AI 환경 이해하기</a>
+      <a href="#appendix" class="toc-link">부록: 용어 정리 및 Q&A</a>
+    </div>
+
+    <!-- Introduction -->
+    <h1 id="intro">강의 소개</h1>
+    <p>
+      본 강의는 프로그래밍 경험이 없는 분들을 대상으로, 최신 AI 기술인 'AI Agent(인공지능 비서)'를 직접 만들어보는
+      과정입니다. 복잡한 코딩 대신 'Langflow'라는 노코드(No-Code) 도구를 사용하여, 블록을 조립하듯이 쉽고 재미있게 AI를
+      배워봅니다.
+    </p>
+
+    <div class="box box-tip">
+      <span class="box-title">🎯 학습 목표</span>
+      <ul>
+        <li>인공지능(AI)과 AI Agent의 기본 개념을 이해합니다.</li>
+        <li>코딩 없이 AI를 개발할 수 있는 Langflow 도구 사용법을 익힙니다.</li>
+        <li>내 업무나 생활에 도움을 주는 실전 AI 챗봇을 직접 만듭니다.</li>
+      </ul>
+    </div>
+
+    <h3>수강 전 준비사항</h3>
+    <ul>
+      <li>인터넷이 연결된 PC 또는 노트북 (Windows 권장)</li>
+      <li>OpenAI 계정 (ChatGPT 사용 계정)</li>
+      <li>새로운 기술을 배우고자 하는 열린 마음</li>
+    </ul>
+
+    <!-- Part 1 -->
+    <h1 id="part1">Part 1. AI 기초 이해하기</h1>
+    <p>
+      AI Agent를 만들기 전에, 우리가 다룰 기술이 무엇인지 간단히 알아봅니다. 어려운 용어보다는 실생활 예시를 중심으로
+      쉽게 설명하겠습니다.
+    </p>
+
+    <h2>1. 인공지능(AI)이란 무엇인가?</h2>
+    <p>
+      <strong>인공지능(Artificial Intelligence, AI)</strong>은 사람처럼 생각하고 학습하며 문제를 해결할 수 있는 컴퓨터
+      프로그램입니다. 마치 사람이 경험을 통해 배우듯이, AI도 많은 데이터를 학습하여 점점 똑똑해집니다.
+    </p>
+
+    <h3>📱 우리가 일상에서 만나는 AI</h3>
+    <ul>
+      <li><strong>스마트폰 음성인식:</strong> "시리야", "OK 구글" - 내 말을 듣고 이해하는 AI</li>
+      <li><strong>넷플릭스 추천:</strong> 내가 본 영화를 분석해서 좋아할 만한 콘텐츠를 추천</li>
+      <li><strong>ChatGPT:</strong> 질문하면 사람처럼 자연스럽게 대답해주는 AI</li>
+    </ul>
+
+    <h2>2. AI Agent는 무엇이 다를까?</h2>
+    <p>
+      일반 AI가 단순히 질문에 답하는 <strong>'똑똑한 사전'</strong>이라면, <strong>AI Agent</strong>는 스스로 생각하고
+      도구를 사용하여 작업을 완성하는 <strong>'똑똑한 비서'</strong>입니다.
+    </p>
+
+    <img
+      src="images/01-01_ai_vs_agent_comparison.png"
+      alt="일반 AI와 AI Agent의 차이점 비교 다이어그램"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 1-1. 단순 응답형 AI vs 행동하는 AI Agent</div>
+
+    <h3>⚖️ 일반 AI vs AI Agent 비교</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="30%">구분</th>
+          <th width="35%">일반 AI (챗봇)</th>
+          <th width="35%">AI Agent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>역할</strong></td>
+          <td>질문에 답변만 제공</td>
+          <td>작업을 직접 수행</td>
+        </tr>
+        <tr>
+          <td><strong>도구 사용</strong></td>
+          <td>❌ 불가능</td>
+          <td>✅ 인터넷 검색, 계산기, 파일 읽기 등 가능</td>
+        </tr>
+        <tr>
+          <td><strong>예시</strong></td>
+          <td>"날씨가 어때?"<br />"오늘은 맑습니다"</td>
+          <td>"날씨가 어때?"<br />"지금 실시간 날씨를 검색해보니 맑고 기온은 22도입니다. 산책하기 좋은 날씨네요!"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Part 2 -->
+    <h1 id="part2">Part 2. 개발 환경 준비 (실습)</h1>
+    <p>
+      Langflow를 사용하기 위해 Windows 컴퓨터에 필요한 환경을 설정하는 단계입니다. 모든 과정을 스크린샷과 함께 천천히
+      따라해 보세요. 약 30-40분 정도 소요됩니다.
+    </p>
+
+    <div class="box box-important">
+      <span class="box-title">⚠️ 시작하기 전 체크리스트</span>
+      <ul>
+        <li>✅ Windows 10 이상 운영체제</li>
+        <li>✅ 인터넷 연결 (설치 파일 다운로드 필요)</li>
+        <li>✅ 관리자 권한 (프로그램 설치 시 필요)</li>
+      </ul>
+    </div>
+
+    <h2>1. Python 설치하기</h2>
+    <p>
+      <strong>Python(파이썬)</strong>은 Langflow를 실행하기 위한 필수 프로그램입니다. 마치 엑셀 파일을 열기 위해 MS
+      Office가 필요한 것처럼, Langflow를 실행하려면 Python이 설치되어 있어야 합니다.
+    </p>
+
+    <h3>Step 1-1: 기존 Python 설치 확인</h3>
+    <ol>
+      <li><span class="step-num">1</span><code>Windows 키 + R</code> → <code>cmd</code> 입력 → 확인</li>
+      <li><span class="step-num">2</span>검은 화면에서 <code>python --version</code> 입력</li>
+      <li><span class="step-num">3</span>버전 숫자가 나오면 성공, 에러가 나면 설치 필요</li>
+    </ol>
+
+    <img
+      src="images/02-01_python_version_check.png"
+      alt="cmd 창에서 python --version 입력 결과"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 2-1. Python 설치 확인 화면</div>
+
+    <h3>Step 1-2: Python 다운로드 및 설치</h3>
+    <p>Python 공식 홈페이지(python.org)에서 다운로드하여 설치합니다.</p>
+
+    <div class="box box-important">
+      <span class="box-title">❗ 중요! 설치 시 주의사항</span>
+      설치 화면 하단의 <strong>"Add Python to PATH"</strong> 체크박스를 반드시 체크해야 합니다!
+    </div>
+
+    <img
+      src="images/02-03_python_install_path.png"
+      alt="Python 설치 화면 - Add Python to PATH 체크박스"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 2-2. Python 설치 시 PATH 추가 체크 (필수!)</div>
+
+    <h2>2. Langflow 설치하기</h2>
+    <p>명령 프롬프트(cmd)에서 다음 명령어를 입력하여 설치합니다.</p>
+    <div class="code-block">pip install langflow</div>
+
+    <img
+      src="images/02-04_langflow_install_progress.png"
+      alt="pip install langflow 실행 화면"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 2-3. Langflow 설치 진행 화면</div>
+
+    <h2>3. OpenAI API 키 발급받기</h2>
+    <p>OpenAI 플랫폼(platform.openai.com)에 가입하고 API 키를 생성합니다.</p>
+
+    <div class="box box-tip">
+      <span class="box-title">💡 API 키란?</span>
+      소프트웨어가 외부 서비스에 접근할 때 사용하는 인증 코드입니다. 비밀번호처럼 안전하게 관리해야 합니다.
+    </div>
+
+    <img
+      src="images/02-06_openai_api_key.png"
+      alt="OpenAI API 키 생성 및 복사 화면"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 2-4. API 키 생성 및 복사</div>
+
+    <h2>4. ChatGPT 웹 UI vs API 사용 방식의 차이 <span style="font-size: 0.6em; color: red; vertical-align: middle">🆕</span></h2>
+    <p>
+      지금까지 API 키를 발급받았습니다. 그런데 "왜 API를 써야 하지? 그냥 ChatGPT 웹사이트에서 채팅하면 안 되나?"라는 의문이 들 수 있습니다. <strong>좋은 질문입니다!</strong>
+    </p>
+    <p>
+      우리가 일상적으로 사용하는 <strong>ChatGPT 웹사이트(웹 UI)</strong>와 <strong>Langflow에서 사용하는 API 방식</strong>은 같은 AI를 사용하지만 <strong>접근 방법</strong>이 다릅니다. 이 차이를 이해하면 Langflow의 가치를 더 명확히 알 수 있습니다.
+    </p>
+
+    <h3>🌐 방식 1: 웹 UI 사용 (채팅 인터페이스)</h3>
+    <p>
+      <strong>ChatGPT 웹사이트</strong>에 접속해서 채팅창에 질문을 입력하는 방식입니다. 우리가 가장 익숙한 방법이죠.
+    </p>
+    
+    <div class="box box-success">
+      <span class="box-title">✅ 장점</span>
+      <ul>
+        <li><strong>직관적:</strong> 카카오톡처럼 쉬움</li>
+        <li><strong>빠른 시작:</strong> 로그인만 하면 바로 사용 가능</li>
+        <li><strong>비전공자 친화적:</strong> 기술 지식 불필요</li>
+      </ul>
+    </div>
+    
+    <div class="box box-warning">
+      <span class="box-title">❌ 단점</span>
+      <ul>
+        <li><strong>수동 작업:</strong> 매번 손으로 입력해야 함</li>
+        <li><strong>반복 불가:</strong> 똑같은 질문을 100번 하려면 100번 복사 붙여넣기</li>
+        <li><strong>연동 불가:</strong> 다른 프로그램과 연결 어려움</li>
+      </ul>
+    </div>
+    
+    <p><strong>예시:</strong> "내일 날씨 알려줘" → 채팅창에 입력 → AI 답변 확인 (한 번의 대화)</p>
+
+    <h3>🔌 방식 2: API 사용 (프로그래밍 연동)</h3>
+    <p>
+      <strong>API(Application Programming Interface)</strong>는 프로그램이 AI와 대화하는 방식입니다. <strong>Langflow가 바로 이 방식</strong>을 사용합니다.
+    </p>
+    
+    <div class="box box-success">
+      <span class="box-title">✅ 장점</span>
+      <ul>
+        <li><strong>자동화 가능:</strong> 프로그램이 알아서 수천 번도 실행</li>
+        <li><strong>대량 처리:</strong> 1,000개 문서를 한 번에 분석 가능</li>
+        <li><strong>시스템 연동:</strong> 회사 ERP, 챗봇, 웹사이트에 내장 가능</li>
+        <li><strong>비용 효율:</strong> 사용한 만큼만 과금 (토큰 단위)</li>
+      </ul>
+    </div>
+    
+    <div class="box box-warning">
+      <span class="box-title">❌ 단점</span>
+      <ul>
+        <li><strong>기술 필요:</strong> 약간의 설정 지식 필요 <em>(하지만 Langflow가 쉽게 만들어줌!)</em></li>
+        <li><strong>비용 계산 복잡:</strong> 토큰 단위 과금 <em>(하지만 대량 사용 시 저렴)</em></li>
+      </ul>
+    </div>
+    
+    <p><strong>예시:</strong> Langflow로 만든 AI Agent가 자동으로 매일 아침 날씨를 확인하고 이메일 전송</p>
+
+    <h3>⚖️ 비교표: 웹 UI vs API</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="25%">구분</th>
+          <th width="37.5%">웹 UI (채팅)</th>
+          <th width="37.5%">API (Langflow 등)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>접근 방법</strong></td>
+          <td>브라우저로 웹사이트 접속</td>
+          <td>프로그램이 코드로 호출</td>
+        </tr>
+        <tr>
+          <td><strong>비용 구조</strong></td>
+          <td>월 구독료 (무제한 또는 정량)</td>
+          <td>사용량 기반 (토큰당 과금)</td>
+        </tr>
+        <tr>
+          <td><strong>작업 횟수</strong></td>
+          <td>수동 입력 (1회씩)</td>
+          <td>자동 반복 (무제한)</td>
+        </tr>
+        <tr>
+          <td><strong>활용 범위</strong></td>
+          <td>개인 학습, 간단한 질문</td>
+          <td>자동화, 시스템 통합, 대량 처리</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>💡 언제 무엇을 써야 할까?</h3>
+    <p><strong>🌐 웹 UI를 쓰세요:</strong></p>
+    <ul>
+      <li>간단한 질문이나 아이디어 브레인스토밍</li>
+      <li>AI가 처음이라 연습하고 싶을 때</li>
+      <li>한두 번 물어볼 내용</li>
+    </ul>
+    
+    <p><strong>🔌 API(Langflow)를 쓰세요:</strong></p>
+    <ul>
+      <li>똑같은 작업을 반복해야 할 때 (예: 매일 보고서 요약)</li>
+      <li>회사 시스템에 AI를 내장하고 싶을 때</li>
+      <li>여러 단계를 자동화하고 싶을 때 (예: 파일 읽기 → 요약 → 이메일 전송)</li>
+    </ul>
+
+    <h3>🎯 Langflow가 API 방식을 사용하는 이유</h3>
+    <div class="box box-success">
+      <span class="box-title">Langflow는 "노코드로 API를 쉽게 사용하게 해주는 도구"입니다!</span>
+      <p>
+        일반적으로 API를 사용하려면 Python 코드를 작성해야 하지만, Langflow는 <strong>블록을 연결하는 것만으로</strong> 자동으로 API 호출 코드를 생성해줍니다.<br /><br />
+        👉 <strong>쉬움 + 자동화의 장점</strong>을 모두 갖춘 것이 Langflow의 핵심 가치입니다.
+      </p>
+    </div>
+
+    <div class="box box-tip">
+      <span class="box-title">💡 요약</span>
+      <ul>
+        <li><strong>ChatGPT 웹사이트 = 연습하고 배우는 곳</strong></li>
+        <li><strong>Langflow + API = 실제 업무에 적용하는 도구</strong></li>
+      </ul>
+      지금부터는 API를 사용하는 Langflow로 더 강력한 AI Agent를 만들어봅시다!
+    </div>
+
+
+    <!-- Part 3 -->
+    <h1 id="part3">Part 3. Langflow 시작하기</h1>
+    <p>
+      설치가 끝났다면 이제 Langflow의 화면 구성을 꼼꼼히 살펴보고, 어떤 도구들을 사용할 수 있는지 알아봅시다. Langflow는
+      마치 레고 블록을 조립하듯 AI를 만드는 도구입니다.
+    </p>
+
+    <h2>1. 인터페이스 상세 둘러보기</h2>
+    <p>
+      Langflow를 실행(<code>python -m langflow run</code>)하고 브라우저로 접속하면 다음과 같은 작업 화면이 나타납니다.
+    </p>
+
+    <img
+      src="images/03-01_langflow_interface.png"
+      alt="Langflow 메인 인터페이스 구조"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 3-1. Langflow 인터페이스 구조</div>
+
+    <h3>🖥️ 주요 화면 구성</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="25%">영역</th>
+          <th width="75%">설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. 사이드바 (Sidebar)</strong></td>
+          <td>
+            화면 왼쪽에 위치하며, 사용 가능한 모든 컴포넌트(블록)가 카테고리별로 정리되어 있습니다. 검색창을 통해 필요한
+            블록을 빠르게 찾을 수 있습니다.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>2. 캔버스 (Canvas)</strong></td>
+          <td>
+            화면 중앙의 넓은 공간입니다. 사이드바에서 블록을 이곳으로 드래그 앤 드롭하고, 블록들을 선으로 연결하여 AI의
+            흐름(Flow)을 설계합니다.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>3. 상단 메뉴바</strong></td>
+          <td>프로젝트 이름 수정, 저장(Save), 내보내기(Export), 설정 등을 할 수 있는 메뉴입니다.</td>
+        </tr>
+        <tr>
+          <td><strong>4. 인터랙티브 챗 (Chat)</strong></td>
+          <td>우측 하단의 ⚡(번개) 아이콘입니다. 내가 만든 AI Agent를 실시간으로 테스트하고 대화해볼 수 있습니다.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>📁 프로젝트 관리하기</h3>
+    <ul>
+      <li><strong>새 프로젝트 만들기:</strong> 메인 화면에서 'New Project' 버튼을 클릭합니다.</li>
+      <li>
+        <strong>저장하기:</strong> 작업 중인 내용은 자동으로 저장되지만, 상단의 'Save' 버튼을 눌러 수동 저장할 수
+        있습니다.
+      </li>
+      <li>
+        <strong>불러오기:</strong> <code>.json</code> 파일로 된 프로젝트를 'Import' 기능을 통해 불러올 수 있습니다.
+      </li>
+    </ul>
+
+    <h2>2. 10가지 핵심 컴포넌트 완전 정복</h2>
+    <p>사이드바에는 수많은 컴포넌트가 있습니다. 그중 AI Agent 제작에 필수적인 10가지를 상세히 알아봅니다.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th width="15%">카테고리</th>
+          <th width="20%">컴포넌트명</th>
+          <th width="40%">역할 및 설명</th>
+          <th width="25%">주요 연결 대상</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Inputs</strong></td>
+          <td><strong>Chat Input</strong></td>
+          <td>사용자의 질문이나 명령을 받는 시작점입니다. 대화형 AI를 만들 때 필수입니다.</td>
+          <td>Prompt, Agent</td>
+        </tr>
+        <tr>
+          <td><strong>Outputs</strong></td>
+          <td><strong>Chat Output</strong></td>
+          <td>AI의 최종 답변을 화면에 보여주는 끝점입니다.</td>
+          <td>LLM, Agent</td>
+        </tr>
+        <tr>
+          <td><strong>Prompts</strong></td>
+          <td><strong>Prompt</strong></td>
+          <td>AI에게 내릴 구체적인 지시사항(역할, 규칙 등)을 작성하는 템플릿입니다. 변수 {}를 사용할 수 있습니다.</td>
+          <td>LLM, Chat Input</td>
+        </tr>
+        <tr>
+          <td><strong>Models</strong></td>
+          <td><strong>OpenAI</strong></td>
+          <td>GPT-4o 등 실제 지능을 가진 AI 모델입니다. '생각하는 두뇌' 역할을 합니다.</td>
+          <td>Prompt, Chat Output</td>
+        </tr>
+        <tr>
+          <td><strong>Helpers</strong></td>
+          <td><strong>Memory</strong></td>
+          <td>이전 대화 내용을 기억하게 합니다. 이게 없으면 AI는 방금 한 말도 기억하지 못합니다.</td>
+          <td>LLM, Chain</td>
+        </tr>
+        <tr>
+          <td><strong>Data</strong></td>
+          <td><strong>File</strong></td>
+          <td>PDF, txt, CSV 등 파일을 읽어오는 컴포넌트입니다. 문서를 분석할 때 사용합니다.</td>
+          <td>Text Splitter</td>
+        </tr>
+        <tr>
+          <td><strong>Processing</strong></td>
+          <td><strong>Text Splitter</strong></td>
+          <td>긴 문서를 AI가 처리하기 좋게 작은 조각으로 나눕니다.</td>
+          <td>File, Vector Store</td>
+        </tr>
+        <tr>
+          <td><strong>Vector Stores</strong></td>
+          <td><strong>FAISS / Chroma</strong></td>
+          <td>쪼개진 텍스트 조각을 검색 가능한 형태(벡터)로 저장하는 데이터베이스입니다.</td>
+          <td>Text Splitter, Retriever</td>
+        </tr>
+        <tr>
+          <td><strong>Retrievers</strong></td>
+          <td><strong>Retriever</strong></td>
+          <td>사용자의 질문과 관련된 내용을 Vector Store에서 찾아오는 '검색기'입니다.</td>
+          <td>Vector Store, RAG</td>
+        </tr>
+        <tr>
+          <td><strong>Tools</strong></td>
+          <td><strong>Search / API</strong></td>
+          <td>Google 검색이나 날씨 정보 등 외부 세상의 정보를 가져오는 도구입니다.</td>
+          <td>Agent</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. 데이터 흐름과 연결 규칙</h2>
+    <p>컴포넌트들은 점(Handle)과 선(Edge)으로 연결됩니다. 올바르게 연결해야 데이터가 흐를 수 있습니다.</p>
+
+    <h3>🔌 연결 규칙 (Matching)</h3>
+    <div class="box box-tip">
+      <span class="box-title">💡 같은 색깔끼리 연결하세요!</span>
+      <ul>
+        <li>🔵 <strong>Text (파란색) → Text:</strong> 일반적인 글자 데이터</li>
+        <li>🟣 <strong>Message (보라색) → Message:</strong> 대화 기록이나 채팅 메시지</li>
+        <li>🟠 <strong>Data (주황색) → Data:</strong> 파일이나 문서 데이터</li>
+        <li>🟢 <strong>Model (초록색) → Model:</strong> AI 모델 자체</li>
+      </ul>
+    </div>
+    <p>만약 연결선이 <strong>빨간색</strong>으로 변하거나 연결되지 않는다면, 데이터 타입이 맞지 않는 것입니다.</p>
+
+    <h2>4. 유용한 팁과 단축키</h2>
+    <p>작업 속도를 높여주는 꿀팁들입니다.</p>
+    <ul>
+      <li><strong>복사/붙여넣기:</strong> 블록 선택 후 <code>Ctrl + C</code> / <code>Ctrl + V</code></li>
+      <li><strong>실행 취소:</strong> 실수했을 땐 <code>Ctrl + Z</code></li>
+      <li><strong>다중 선택:</strong> <code>Shift</code> 키를 누른 채로 여러 블록 클릭</li>
+      <li><strong>검색:</strong> 캔버스 빈 공간에서 <code>더블 클릭</code>하면 빠른 검색창이 뜹니다.</li>
+      <li><strong>정렬:</strong> 블록들이 엉켜있다면 상단의 🧹(빗자루) 아이콘을 눌러 자동 정렬하세요.</li>
+    </ul>
+
+    <!-- Part 4 -->
+    <h1 id="part4">Part 4. 나만의 AI Agent 만들기 (심화)</h1>
+    <p>
+      이제 본격적으로 실습을 진행합니다. 난이도별로 3가지 프로젝트를 차근차근 만들어보며 AI Agent 제작 능력을
+      키워봅시다.
+    </p>
+
+    <h2>🎯 프로젝트 1: 기본 요리 레시피 봇 (초급)</h2>
+    <p>
+      가장 기초적인 <strong>Prompt Engineering</strong>을 실습하는 프로젝트입니다. AI에게 특정한 역할을 부여하는 방법을
+      배웁니다.
+    </p>
+
+    <h3>Step 1: 컴포넌트 배치 및 연결</h3>
+    <p>다음 4개의 컴포넌트를 배치하고 순서대로 연결하세요.</p>
+    <div class="code-block">Chat Input → Prompt → OpenAI → Chat Output</div>
+
+    <h3>Step 2: OpenAI 모델 설정</h3>
+    <p>OpenAI 블록을 클릭하여 설정을 변경합니다.</p>
+    <ul>
+      <li><strong>API Key:</strong> Part 2에서 발급받은 키 입력 (sk-...)</li>
+      <li><strong>Model Name:</strong> <code>gpt-4o-mini</code> (속도가 빠르고 저렴함)</li>
+      <li><strong>Temperature:</strong> <code>0.7</code> (창의성 조절, 0에 가까우면 사실적, 1에 가까우면 창의적)</li>
+    </ul>
+
+    <img
+      src="images/04-01_chatbot_flow.png"
+      alt="기본 챗봇 흐름도 구성"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 4-1. 기본 챗봇 흐름도 구성</div>
+
+    <h3>Step 3: 프롬프트 작성 (페르소나 부여)</h3>
+    <p>Prompt 블록의 <code>Template</code>에 다음 내용을 입력합니다. <code>{ingredients}</code>는 변수입니다.</p>
+    <div class="box box-success">
+      <span class="box-title">📝 프롬프트 템플릿</span>
+      당신은 20년 경력의 미슐랭 3스타 셰프입니다. 말투는 매우 정중하고 친절합니다.<br />
+      사용자가 냉장고에 있는 재료를 말하면, 그 재료로 만들 수 있는 최고의 요리 1가지를 추천하고 레시피를 단계별로
+      알려주세요.<br /><br />
+      사용자가 가진 재료: {ingredients}
+    </div>
+
+    <h3>Step 4: 테스트</h3>
+    <p>번개 아이콘을 누르고 채팅창에 "계란, 양파, 대파가 있어"라고 입력해보세요.</p>
+
+    <h2>🎭 프로젝트 2: 맞춤형 여행 가이드 봇 (중급)</h2>
+    <p>이번에는 AI의 말투와 성격을 더 세밀하게 조정하고, 사용자 입력을 더 체계적으로 받는 방법을 배웁니다.</p>
+
+    <h3>Step 1: 목표 설정</h3>
+    <ul>
+      <li><strong>역할:</strong> 제주도 토박이 여행 가이드 '돌하르방'</li>
+      <li><strong>특징:</strong> 제주도 사투리를 사용하며, 맛집보다는 숨겨진 명소를 추천함</li>
+    </ul>
+
+    <h3>Step 2: 프롬프트 엔지니어링 (System vs User)</h3>
+    <p>Prompt 블록을 수정하여 더 강력한 지시를 내립니다.</p>
+    <div class="box box-success">
+      <span class="box-title">📝 프롬프트 템플릿</span>
+      [System]<br />
+      당신의 이름은 '돌하르방'입니다. 제주도 토박이이며 구수한 제주 사투리(혼저옵서예 등)를 씁니다.<br />
+      관광지보다는 현지인만 아는 숨겨진 명소를 추천하는 것을 좋아합니다.<br /><br />
+      [Context]<br />
+      사용자가 여행하고 싶은 지역과 인원 수를 입력할 것입니다.<br /><br />
+      [User Input]<br />
+      질문: {user_question}
+    </div>
+
+    <h2>🌐 프로젝트 3: 실시간 다국어 번역 봇 (고급)</h2>
+    <p>
+      단순 번역이 아니라, <strong>Few-shot Learning(예시 제공)</strong> 기법을 사용하여 번역 품질을 높이는 방법입니다.
+    </p>
+
+    <h3>Step 1: Few-shot Learning이란?</h3>
+    <p>
+      AI에게 "이렇게 해줘"라고 말만 하는 것보다, "예를 들면 이런 거야"라고 예시를 몇 개 보여주면 성능이 훨씬 좋아집니다.
+    </p>
+
+    <h3>Step 2: 프롬프트 작성</h3>
+    <p>번역 봇을 위한 프롬프트에 예시를 포함시킵니다.</p>
+    <div class="box box-success">
+      <span class="box-title">📝 프롬프트 템플릿 (Few-shot)</span>
+      당신은 전문 통번역가입니다. 입력된 한국어 문장을 자연스러운 비즈니스 영어로 번역하세요.<br />
+      직역보다는 의역을 사용하여 문맥에 맞게 표현하세요.<br /><br />
+      예시 1:<br />
+      한국어: 이 프로젝트 좀 도와주실 수 있나요?<br />
+      영어: Could you give me a hand with this project?<br /><br />
+      예시 2:<br />
+      한국어: 일정 좀 확인해 주세요.<br />
+      영어: Please check the schedule.<br /><br />
+      실전:<br />
+      한국어: {korean_text}<br />
+      영어:
+    </div>
+
+
+
+    <h2>🗂️ 프로젝트 4: 문서 기반 Q&A 봇 (RAG 입문) <span style="font-size: 0.6em; color: red; vertical-align: middle">🆕</span></h2>
+    <p>
+      이번에는 <strong>가장 실무에서 많이 쓰이는</strong> 기능을 배워봅니다. 바로 <strong>RAG(Retrieval-Augmented Generation)</strong>입니다. 어려운 용어지만, 개념은 정말 간단합니다!
+    </p>
+
+    <h3>💡 RAG가 뭔가요?</h3>
+    <div class="box box-tip">
+      <span class="box-title">🎯 초간단 비유</span>
+      <p>
+        <strong>일반 AI:</strong> 학생이 시험을 볼 때 <strong>머릿속 기억만</strong> 의지하는 것<br />
+        <strong>RAG AI:</strong> 학생이 시험을 볼 때 <strong>참고서를 펼쳐놓고</strong> 보는 것<br /><br />
+        👉 AI에게 <strong>"이 문서를 참고해서 대답해"</strong>라고 자료를 주는 기술입니다!
+      </p>
+    </div>
+
+    <h3>🤔 왜 RAG가 필요한가?</h3>
+    <p><strong>일반 AI(GPT-4)의 한계:</strong></p>
+    <ul>
+      <li>❌ <strong>최신 정보를 모름:</strong> 2023년 10월 이후 뉴스나 정보는 학습 안 됨</li>
+      <li>❌ <strong>회사 내부 정보를 모름:</strong> 우리 회사 복리후생, 휴가 규정, 제품 매뉴얼 등</li>
+      <li>❌ <strong>가끔 거짓말을 함:</strong> 모르는 내용을 그럴듯하게 지어냄 (환각, Hallucination)</li>
+    </ul>
+
+    <p><strong>RAG를 쓰면:</strong></p>
+    <ul>
+      <li>✅ <strong>정확한 답변:</strong> 실제 문서 내용을 기반으로 답변</li>
+      <li>✅ <strong>최신 정보 반영:</strong> 오늘 작성한 문서도 바로 활용 가능</li>
+      <li>✅ <strong>사내 정보 활용:</strong> 회사 규정, 매뉴얼, FAQ 등을 AI가 읽고 답변</li>
+      <li>✅ <strong>출처 표시:</strong> "이 내용은 문서 3페이지에서 가져왔어요"라고 알려줄 수 있음</li>
+    </ul>
+
+    <h3>🎯 실습 목표: 회사 복리후생 FAQ 봇 만들기</h3>
+    <p>
+      <strong>시나리오:</strong> 직원들이 자주 묻는 "연차는 몇 개인가요?", "경조사비는 얼마인가요?" 같은 질문에 PDF 복리후생 안내서를 읽고 자동으로 답변하는 봇을 만듭니다.
+    </p>
+
+    <h3>Step 1: 문서 준비</h3>
+    <div class="box box-success">
+      <span class="box-title">✅ 실습용 문서 예시</span>
+      <p>
+        간단한 텍스트 파일(TXT) 또는 PDF를 준비하세요. 예를 들어:<br /><br />
+        <strong>복리후생_안내서.txt</strong><br />
+        ---<br />
+        우리 회사 복리후생 안내<br /><br />
+        1. 연차: 입사 1년차 15개, 2년차부터 매년 1개씩 추가 (최대 25개)<br />
+        2. 경조사비: 결혼 30만원, 출산 20만원<br />
+        3. 중식 지원: 1일 1만원 식비 지원<br />
+        4. 건강검진: 매년 종합검진 무료 제공<br />
+        ---
+      </p>
+    </div>
+
+    <h3>Step 2: Langflow 컴포넌트 배치</h3>
+    <p>이번에는 5개의 컴포넌트가 필요합니다. 다음 순서대로 연결하세요:</p>
+    <div class="code-block">
+File → Text Splitter → Vector Store (FAISS) → Retriever → Prompt → OpenAI → Chat Output
+    </div>
+
+    <p><strong>각 블록의 역할:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th width="25%">컴포넌트</th>
+          <th width="75%">역할</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>File</strong></td>
+          <td>📄 복리후생_안내서.txt 파일을 읽어옵니다</td>
+        </tr>
+        <tr>
+          <td><strong>Text Splitter</strong></td>
+          <td>✂️ 긴 문서를 작은 조각(chunk)으로 나눕니다 (예: 문단별로 나누기)</td>
+        </tr>
+        <tr>
+          <td><strong>Vector Store (FAISS)</strong></td>
+          <td>🗄️ 나눈 조각들을 "검색 가능한 형태"로 저장합니다 (벡터 데이터베이스)</td>
+        </tr>
+        <tr>
+          <td><strong>Retriever</strong></td>
+          <td>🔍 사용자 질문과 가장 관련 있는 문서 조각을 찾아옵니다</td>
+        </tr>
+        <tr>
+          <td><strong>Prompt</strong></td>
+          <td>📝 찾아온 문서 내용을 AI에게 "이 자료를 참고해"라고 전달</td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong></td>
+          <td>🧠 문서 내용을 읽고 사용자 질문에 답변 생성</td>
+        </tr>
+        <tr>
+          <td><strong>Chat Output</strong></td>
+          <td>💬 최종 답변을 화면에 표시</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Step 3: 각 블록 설정하기</h3>
+
+    <h4>🔧 File 블록 설정</h4>
+    <ul>
+      <li>File 블록 클릭 → <strong>"Path"</strong> 항목에 파일 경로 입력</li>
+      <li>예: <code>C:\Users\내이름\Documents\복리후생_안내서.txt</code></li>
+      <li>또는 "Upload" 버튼으로 파일 직접 업로드</li>
+    </ul>
+
+    <h4>✂️ Text Splitter 블록 설정</h4>
+    <ul>
+      <li><strong>Chunk Size:</strong> <code>500</code> (한 조각의 글자 수, 기본값 사용)</li>
+      <li><strong>Chunk Overlap:</strong> <code>50</code> (조각 간 중복 부분, 문맥 유지용)</li>
+    </ul>
+
+    <div class="box box-tip">
+      <span class="box-title">💡 왜 문서를 쪼개나요?</span>
+      <p>
+        AI는 한 번에 많은 글자를 처리하기 어렵습니다. 또한 질문과 <strong>관련 있는 부분만</strong> 찾아서 보내는 것이 더 정확합니다.<br />
+        예: 50페이지 매뉴얼에서 "연차" 관련 질문이 들어오면, 연차가 적힌 2페이지만 AI에게 보냅니다.
+      </p>
+    </div>
+
+    <h4>🗄️ Vector Store (FAISS) 블록 설정</h4>
+    <ul>
+      <li>특별한 설정 없이 기본값 사용 (자동으로 벡터 DB 생성)</li>
+      <li><strong>FAISS란?</strong> Facebook이 만든 빠른 검색 엔진입니다 (비유: 도서관 카드 목록)</li>
+    </ul>
+
+    <div class="box box-warning">
+      <span class="box-title">⚠️ FAISS의 한계 (중요!)</span>
+      <p>
+        <strong>FAISS는 내 PC에만 저장됩니다!</strong><br />
+        • ❌ 다른 팀원이 접근 불가<br />
+        • ❌ 서버에 배포 불가<br />
+        • ❌ 재부팅하면 데이터 유실 위험<br /><br />
+        <strong>👉 실무에서는 어떻게 하나요?</strong><br />
+        회사의 <strong>사내 벡터 DB 서버</strong>를 사용합니다!<br />
+        예: Pinecone (사내 서버), Weaviate, Milvus 등<br /><br />
+        <strong>✅ Agent Builder에서는:</strong><br />
+        FAISS 대신 <strong>사내 벡터 DB가 자동으로 연결</strong>되어<br />
+        팀 전체가 문서를 공유하고 검색할 수 있습니다!
+      </p>
+    </div>
+
+    <h4>🔍 Retriever 블록 설정</h4>
+    <ul>
+      <li><strong>Top K:</strong> <code>3</code> (가장 관련 있는 문서 조각 3개를 가져옴)</li>
+    </ul>
+
+    <h4>📝 Prompt 블록 설정</h4>
+    <p>아래 템플릿을 입력하세요. <code>{context}</code>는 Retriever가 찾아온 문서 내용이 자동으로 들어갑니다.</p>
+    <div class="box box-success">
+      <span class="box-title">📝 RAG 프롬프트 템플릿</span>
+당신은 회사 복리후생 안내 담당자입니다.<br />
+아래 문서 내용을 <strong>반드시 참고</strong>하여 질문에 답변하세요.<br />
+문서에 없는 내용은 "해당 정보는 안내서에 없습니다"라고 말하세요.<br /><br />
+
+[참고 문서]<br />
+{context}<br /><br />
+
+[사용자 질문]<br />
+{question}
+    </div>
+
+    <h3>Step 4: 연결 및 테스트</h3>
+    <ol>
+      <li><span class="step-num">1</span>모든 블록을 순서대로 선으로 연결</li>
+      <li><span class="step-num">2</span>⚡ 번개 아이콘 클릭하여 챗봇 실행</li>
+      <li><span class="step-num">3</span>질문 입력: <strong>"우리 회사 연차는 몇 개야?"</strong></li>
+      <li><span class="step-num">4</span>AI가 문서를 읽고 정확하게 답변하는지 확인!</li>
+    </ol>
+
+    <div class="box box-success">
+      <span class="box-title">✅ 기대 결과</span>
+      <p>
+        <strong>사용자:</strong> 우리 회사 연차는 몇 개야?<br />
+        <strong>AI:</strong> 우리 회사의 연차는 입사 1년차에 15개가 제공되며, 2년차부터는 매년 1개씩 추가되어 최대 25개까지 받으실 수 있습니다. (복리후생 안내서 참고)
+      </p>
+    </div>
+
+    <h3>🎯 실전 활용 예시</h3>
+    <ul>
+      <li>📄 <strong>고객 매뉴얼 Q&A:</strong> 제품 사용법 PDF를 넣고 "A 기능 어떻게 써요?" 자동 답변</li>
+      <li>📋 <strong>회의록 검색:</strong> 1년치 회의록을 넣고 "지난달 마케팅 예산 결정사항은?" 검색</li>
+      <li>📚 <strong>내부 위키 챗봇:</strong> 사내 규정, 프로세스 문서를 모아서 "출장 신청 어떻게 해?" 답변</li>
+      <li>📊 <strong>보고서 요약:</strong> 100페이지 보고서 넣고 "핵심 결론 3가지 알려줘" 요청</li>
+    </ul>
+
+    <h3>⚠️ RAG 사용 시 주의사항</h3>
+    <div class="box box-warning">
+      <span class="box-title">❗ 중요!</span>
+      <ul>
+        <li><strong>외부 AI(OpenAI) 사용 시:</strong> 업로드한 문서가 <strong>외부 서버</strong>로 전송됩니다!<br />
+          → 공개 가능한 문서만 사용하세요 (브로슈어, 공개 FAQ, 일반 매뉴얼 등)</li>
+        <li><strong>민감한 문서는:</strong> 반드시 <strong>사내 AI + 사내 벡터 DB</strong>를 사용해야 합니다<br />
+          → Part 5에서 자세히 다룹니다!</li>
+      </ul>
+    </div>
+
+    <div class="box box-tip">
+      <span class="box-title">💡 다음 단계 (Part 5에서 계속)</span>
+      <p>
+        지금은 <strong>외부 AI로 RAG 기본 개념</strong>을 배웠습니다.<br />
+        Part 5에서는 <strong>사내 민감 문서를 안전하게 다루는 방법</strong>을 배웁니다!<br /><br />
+        예: 고객 계약서, 인사 정보, 회계 자료 등을 외부로 보내지 않고 처리하는 법
+      </p>
+    </div>
+
+
+    <h2>🧠 프롬프트 엔지니어링 기초</h2>
+    <p>AI에게 일을 잘 시키기 위한 5가지 황금 법칙입니다.</p>
+
+    <div class="box box-tip">
+      <span class="box-title">🌟 좋은 프롬프트의 5가지 원칙</span>
+      <ol>
+        <li><strong>구체적으로 지시하라:</strong> "글 써줘" (X) → "300자 내외의 블로그 마케팅용 글을 써줘" (O)</li>
+        <li><strong>맥락을 제공하라:</strong> 누가 읽을 글인지, 어떤 목적인지 설명하세요.</li>
+        <li><strong>예시를 보여줘라 (Few-shot):</strong> 원하는 결과물의 예시를 1~3개 주면 정확도가 급상승합니다.</li>
+        <li>
+          <strong>단계별로 생각하게 하라 (Chain of Thought):</strong> "단계별로 설명해", "이유를 먼저 말해"라고
+          지시하세요.
+        </li>
+        <li>
+          <strong>제약 조건을 걸어라:</strong> "비속어 금지", "이모지 사용 필수", "3문장 이내" 등 규칙을 정하세요.
+        </li>
+      </ol>
+    </div>
+
+    <h2>🔧 문제 해결 및 디버깅</h2>
+    <p>AI Agent가 제대로 동작하지 않을 때 확인해야 할 사항들입니다.</p>
+
+    <h3>자주 발생하는 오류 Top 3</h3>
+
+    <div class="box box-warning">
+      <span class="box-title">🚨 오류 1: 빨간색 연결선이 생겨요</span>
+      <p><strong>원인:</strong> 데이터 타입이 맞지 않음 (예: 텍스트를 모델 입력에 바로 연결)</p>
+      <p><strong>해결:</strong> <code>Prompt</code> 블록을 중간에 넣어서 텍스트를 프롬프트 형태로 변환하세요.</p>
+    </div>
+
+    <div class="box box-warning">
+      <span class="box-title">🚨 오류 2: API Key Error</span>
+      <p><strong>원인:</strong> OpenAI API 키가 없거나 잘못됨</p>
+      <p>
+        <strong>해결:</strong> OpenAI 블록을 클릭하여 API 키가 올바르게 입력되었는지, 공백이 포함되지 않았는지
+        확인하세요.
+      </p>
+    </div>
+
+    <div class="box box-warning">
+      <span class="box-title">🚨 오류 3: 답변이 너무 짧거나 이상해요</span>
+      <p><strong>원인:</strong> Max Tokens 설정이 너무 작거나 Temperature가 너무 높음</p>
+      <p>
+        <strong>해결:</strong> OpenAI 설정에서 <code>Max Tokens</code>를 1024 이상으로 늘리고,
+        <code>Temperature</code>를 0.7 정도로 맞추세요.
+      </p>
+    </div>
+
+    <!-- Part 5 -->
+    <h1 id="part5">Part 5. 사내 AI 환경 이해하기</h1>
+    <p>
+      지금까지 OpenAI(외부 AI)를 사용해서 AI Agent를 만들어봤습니다. 이제 우리 회사가 자체적으로 운영하는
+      <strong>사내 AI 환경</strong>에 대해 알아보고, 외부 환경과 무엇이 다른지, 어떻게 활용하는지 배워보겠습니다.
+    </p>
+
+    <div class="box box-tip">
+      <span class="box-title">💡 이 섹션의 목표</span>
+      외부 AI(OpenAI)와 사내 AI의 차이점을 이해하고, Langflow에서 사내 AI로 전환하는 방법을 익힙니다.
+    </div>
+
+    <h2>1. 외부 AI vs 사내 AI: 무엇이 다를까?</h2>
+    <p>
+      지금까지 사용한 OpenAI는 미국 회사가 운영하는 <strong>외부 서비스</strong>입니다. 반면 우리 회사의 사내 AI는
+      <strong>회사 내부 서버</strong>에서 작동하는 자체 AI입니다.
+    </p>
+
+    <img
+      src="images/05-01_external_vs_internal_ai.png"
+      alt="외부 AI와 사내 AI 데이터 흐름 비교"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 5-1. 외부 AI는 데이터가 인터넷을 통해 외부로, 사내 AI는 회사 내부에서만 처리</div>
+
+
+    <h2>2. 우리 회사가 사내 AI를 선택한 이유</h2>
+    <p>회사는 막대한 비용을 들여 자체 AI 시스템을 구축했습니다. 왜 외부 AI를 쓰지 않고 직접 만들었을까요?</p>
+
+    <h3>🔒 이유 1: 데이터 보안 (가장 중요!)</h3>
+    <div class="box box-important">
+      <span class="box-title">❗ 실제 사례</span>
+      <p>
+        <strong>상황:</strong> A팀이 외부 AI에 고객 계약서를 업로드해서 요약을 요청<br />
+        <strong>문제:</strong> 고객 개인정보(이름, 연락처, 계약 금액)가 외부 서버로 전송됨<br />
+        <strong>결과:</strong> 정보 보호법 위반 가능성, 회사 이미지 타격 위험
+      </p>
+    </div>
+
+    <p><strong>사내 AI의 장점:</strong></p>
+    <ul>
+      <li>✅ 고객 정보, 재무 데이터 등 민감한 정보를 안전하게 처리</li>
+      <li>✅ 데이터가 절대 외부로 유출되지 않음</li>
+      <li>✅ 정보 보호법, 금융 규정 등 법적 요구사항 준수</li>
+      <li>✅ 고객과 주주에게 신뢰 제공</li>
+    </ul>
+
+    <h3>💰 이유 2: 장기적 비용 절감</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="20%">구분</th>
+          <th width="40%">외부 AI (OpenAI)</th>
+          <th width="40%">사내 AI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>초기 비용</strong></td>
+          <td>거의 없음 (무료 가입)</td>
+          <td>매우 큼 (서버, 모델 구축)</td>
+        </tr>
+        <tr>
+          <td><strong>월 운영비</strong></td>
+          <td>사용량에 비례 (무제한 증가 가능)</td>
+          <td>고정 비용 (전기, 관리 인력)</td>
+        </tr>
+        <tr>
+          <td><strong>3년 후</strong></td>
+          <td>💸 수억원 지출 가능</td>
+          <td>✅ 초기 투자 회수, 이후 저렴</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-success">
+      <span class="box-title">💡 회사 입장에서는</span>
+      직원 1,000명이 매일 AI를 쓴다고 가정하면, 외부 AI는 매달 수천만원이 나갑니다. 사내 AI는 초기 투자는 크지만
+      장기적으로는 훨씬 경제적입니다.
+    </div>
+
+    <h3>🎨 이유 3: 우리 회사에 맞춘 커스터마이징</h3>
+    <ul>
+      <li><strong>회사 전문 용어 학습:</strong> 우리 회사 제품명, 부서 약어, 업무 프로세스를 미리 학습</li>
+      <li><strong>사내 문서 연결:</strong> 내부 위키, 업무 매뉴얼 등을 AI가 자동으로 참고</li>
+      <li><strong>정책 반영:</strong> 회사 규정에 맞게 AI의 응답 방식을 조정 가능</li>
+    </ul>
+
+    <div class="box box-tip">
+      <span class="box-title">🎯 예시</span>
+      외부 AI: "죄송하지만 귀사의 내부 프로세스는 모릅니다"<br />
+      사내 AI: "출장 신청은 인사포털 → 전자결재 → [출장] 메뉴에서 하시면 됩니다!"
+    </div>
+
+    <h2>3. 🌐 Proxy 설정 이해하기</h2>
+    <p>
+      회사 네트워크는 보안을 위해 <strong>Proxy(중계) 서버</strong>를 통해 인터넷과 사내망을 연결합니다. Langflow가 외부
+      서비스에 접근하려면 Proxy 설정이 필요할 수 있습니다.
+    </p>
+
+    <div class="box box-tip">
+      <span class="box-title">💡 Proxy란?</span>
+      <strong>중계 서버</strong>를 의미합니다. 회사에서 인터넷을 사용할 때 직접 연결하지 않고, Proxy 서버를 거쳐서
+      연결됩니다. 마치 회사 정문의 경비실을 통과해야 외부로 나갈 수 있는 것과 비슷합니다.
+    </div>
+
+    <h3>🔧 언제 Proxy 설정이 필요한가?</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="40%">상황</th>
+          <th width="60%">Proxy 설정 필요 여부</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>외부 AI 사용</strong> (OpenAI)</td>
+          <td>✅ 필요 (인터넷 접근)</td>
+        </tr>
+        <tr>
+          <td><strong>사내 AI만 사용</strong></td>
+          <td>❌ 불필요 (사내망만 사용)</td>
+        </tr>
+        <tr>
+          <td><strong>Langflow 설치 시</strong></td>
+          <td>✅ 필요 (인터넷에서 다운로드)</td>
+        </tr>
+        <tr>
+          <td><strong>집에서 작업</strong></td>
+          <td>❌ 불필요 (회사 Proxy 없음)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>⚙️ Proxy 설정 방법</h3>
+
+    <h4>방법 1: 환경변수로 설정 (권장)</h4>
+    <p>Python과 Langflow가 자동으로 Proxy를 사용하도록 설정합니다.</p>
+
+    <ol>
+      <li>
+        <span class="step-num">1</span>IT팀에게 다음 정보를 요청합니다:
+        <ul>
+          <li>Proxy 서버 주소 (예: <code>proxy.company.com</code>)</li>
+          <li>Proxy 포트 번호 (예: <code>8080</code>)</li>
+          <li>인증 필요 여부 (ID/비밀번호)</li>
+        </ul>
+      </li>
+      <li>
+        <span class="step-num">2</span>Windows에서 환경변수 설정:
+        <ul>
+          <li><code>Windows 키</code> 누르고 "환경 변수" 검색</li>
+          <li>"시스템 환경 변수 편집" 클릭</li>
+          <li>"환경 변수" 버튼 클릭</li>
+          <li>"시스템 변수" 영역에서 "새로 만들기" 클릭</li>
+        </ul>
+      </li>
+      <li>
+        <span class="step-num">3</span>다음 변수를 추가합니다:
+        <table style="margin: 10px 0">
+          <thead>
+            <tr>
+              <th width="30%">변수 이름</th>
+              <th width="70%">변수 값</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>HTTP_PROXY</code></td>
+              <td><code>http://proxy.company.com:8080</code></td>
+            </tr>
+            <tr>
+              <td><code>HTTPS_PROXY</code></td>
+              <td><code>http://proxy.company.com:8080</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ol>
+
+    <h4>방법 2: pip 설치 시에만 Proxy 사용</h4>
+    <p>Langflow를 설치할 때만 일시적으로 Proxy를 사용하는 방법입니다.</p>
+    <div class="code-block">pip install langflow --proxy http://proxy.company.com:8080</div>
+
+    <h4>방법 3: Langflow 실행 시 Proxy 제외 설정</h4>
+    <p>사내 AI 주소는 Proxy를 거치지 않도록 설정할 수 있습니다.</p>
+    <ol>
+      <li>환경변수에 <code>NO_PROXY</code> 추가</li>
+      <li>변수 값: <code>localhost,127.0.0.1,internal-ai.company.com</code></li>
+    </ol>
+
+
+
+    <h2>4. 외부 RAG vs 사내 RAG: 민감 문서는 어떻게? <span style="font-size: 0.6em; color: red; vertical-align: middle">🆕</span></h2>
+    <p>
+      Part 4에서 RAG 기본 개념을 배웠습니다. 하지만 <strong>중요한 문제</strong>가 하나 남았습니다:<br />
+      <strong>"고객 계약서, 인사 정보 같은 민감한 문서도 RAG로 쓸 수 있나요?"</strong>
+    </p>
+
+    <div class="box box-important">
+      <span class="box-title">⚠️ 핵심 질문</span>
+      <p>
+        Part 4의 RAG 실습에서는 <strong>OpenAI(외부 AI)</strong>를 사용했습니다.<br />
+        이 말은 업로드한 문서가 <strong>미국 OpenAI 서버</strong>로 전송되었다는 뜻입니다!<br /><br />
+        👉 공개 가능한 문서(브로슈어, 매뉴얼)는 괜찮지만, <strong>민감 문서는 절대 안 됩니다!</strong>
+      </p>
+    </div>
+
+    <h3>🔒 민감한 문서 예시</h3>
+    <p>다음 문서들은 <strong>절대 외부 AI에 업로드하면 안 됩니다:</strong></p>
+    <ul>
+      <li>❌ <strong>고객 계약서:</strong> 고객 이름, 계약 금액, 특별 조건</li>
+      <li>❌ <strong>인사 정보:</strong> 직원 연봉, 평가 결과, 개인 신상정보</li>
+      <li>❌ <strong>재무 자료:</strong> 회계 장부, 매출 데이터, 손익계산서</li>
+      <li>❌ <strong>기술 문서:</strong> 특허 출원 전 자료, 소스 코드, 설계도</li>
+      <li>❌ <strong>전략 문서:</strong> 신제품 계획, M&A 검토, 사업 전략</li>
+    </ul>
+
+    <h3>⚖️ 외부 RAG vs 사내 RAG 완벽 비교</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="20%">구분</th>
+          <th width="40%">외부 RAG (OpenAI)</th>
+          <th width="40%">사내 RAG (자체 AI)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>AI 모델</strong></td>
+          <td>OpenAI GPT-4 (외부)</td>
+          <td>회사 자체 LLM (내부)</td>
+        </tr>
+        <tr>
+          <td><strong>문서 저장</strong></td>
+          <td>❌ OpenAI 벡터 DB (미국 서버)</td>
+          <td>✅ 사내 벡터 DB (회사 서버)</td>
+        </tr>
+        <tr>
+          <td><strong>데이터 이동</strong></td>
+          <td>❌ 인터넷을 통해 외부 전송</td>
+          <td>✅ 회사 내부망에서만 처리</td>
+        </tr>
+        <tr>
+          <td><strong>사용 가능 문서</strong></td>
+          <td>공개 문서만 (브로슈어, FAQ, 일반 매뉴얼)</td>
+          <td>모든 문서 (계약서, 인사, 재무 포함)</td>
+        </tr>
+        <tr>
+          <td><strong>보안 수준</strong></td>
+          <td>⚠️ 낮음 (외부 유출 위험)</td>
+          <td>✅ 높음 (내부에서만 처리)</td>
+        </tr>
+        <tr>
+          <td><strong>비용</strong></td>
+          <td>문서량에 따라 과금 (벡터 저장 비용)</td>
+          <td>고정 비용 (사내 서버 운영)</td>
+        </tr>
+        <tr>
+          <td><strong>속도</strong></td>
+          <td>인터넷 속도 의존</td>
+          <td>빠름 (사내망 속도)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>🎯 실전 시나리오: 어떤 RAG를 써야 할까?</h3>
+
+    <h4>✅ 외부 RAG를 써도 되는 경우</h4>
+    <div class="box box-success">
+      <span class="box-title">공개 문서 전용</span>
+      <ul>
+        <li>📘 <strong>제품 사용 설명서:</strong> 고객에게 공개된 매뉴얼 → 외부 RAG OK</li>
+        <li>📰 <strong>보도자료:</strong> 이미 언론에 공개된 자료 → 외부 RAG OK</li>
+        <li>💼 <strong>회사 소개서:</strong> 홈페이지에 게시된 브로슈어 → 외부 RAG OK</li>
+        <li>❓ <strong>고객 FAQ:</strong> 공개된 자주 묻는 질문 → 외부 RAG OK</li>
+      </ul>
+    </div>
+
+    <h4>❌ 반드시 사내 RAG를 써야 하는 경우</h4>
+    <div class="box box-important">
+      <span class="box-title">민감 문서 필수</span>
+      <ul>
+        <li>📄 <strong>고객 계약서 Q&A:</strong> 계약 내용 검색 → <strong>사내 RAG 필수</strong></li>
+        <li>👥 <strong>인사 규정 챗봇:</strong> 직원 복리후생, 인사 제도 → <strong>사내 RAG 필수</strong></li>
+        <li>💰 <strong>재무 보고서 분석:</strong> 손익, 예산 데이터 → <strong>사내 RAG 필수</strong></li>
+        <li>🔧 <strong>내부 기술 문서:</strong> 시스템 설계, 코드 리뷰 → <strong>사내 RAG 필수</strong></li>
+      </ul>
+    </div>
+
+    <h3>🔄 Part 4 RAG를 사내 AI로 전환하는 방법</h3>
+    <p>좋은 소식! RAG를 외부에서 사내로 바꾸는 것은 <strong>2가지만 수정</strong>하면 됩니다:</p>
+
+    <div class="box box-tip">
+      <span class="box-title">✅ 변경 사항 (2곳)</span>
+      <ol>
+        <li>
+          <strong>AI 모델 교체:</strong><br />
+          OpenAI 블록 → Custom LLM 블록 (사내 AI 주소 입력)
+        </li>
+        <li>
+          <strong>벡터 DB 교체:</strong><br />
+          FAISS (로컬) → 사내 벡터 DB (예: Pinecone 사내 서버, Weaviate 등)
+        </li>
+      </ol>
+      <p>나머지(File, Text Splitter, Retriever, Prompt)는 그대로 유지!</p>
+    </div>
+
+    <h3>📊 벡터 DB도 바꿔야 하나요?</h3>
+    <p><strong>Q: Part 4에서 쓴 FAISS는 로컬 파일에 저장되는데, 이것도 문제인가요?</strong></p>
+    
+    <div class="box box-warning">
+      <span class="box-title">⚠️ FAISS의 한계</span>
+      <p>
+        FAISS는 <strong>내 PC에만 저장</strong>됩니다.<br />
+        👉 다른 팀원이 사용할 수 없고, 서버에 배포할 수도 없습니다.<br /><br />
+        <strong>실무에서는:</strong> 사내 벡터 DB 서버(Pinecone, Weaviate, Milvus 등)에 저장해서<br />
+        여러 직원이 함께 사용하는 것이 일반적입니다.
+      </p>
+    </div>
+
+    <h3>🎯 사내 RAG 구축 흐름 (간단 요약)</h3>
+    <div class="code-block">
+1. 민감 문서 준비 (예: 고객 계약서 100건)
+   ↓
+2. 사내 서버에서 Text Splitter로 쪼개기
+   ↓
+3. 사내 Embedding 모델로 벡터화
+   ↓
+4. 사내 벡터 DB(Pinecone/Weaviate)에 저장
+   ↓
+5. 사용자 질문 → 사내 Retriever가 검색
+   ↓
+6. 사내 LLM이 답변 생성
+   ↓
+7. ✅ 모든 과정이 회사 내부에서만 처리!
+    </div>
+
+    <div class="box box-success">
+      <span class="box-title">💡 요약: 언제 뭘 써야 할까?</span>
+      <table style="margin-top: 10px">
+        <thead>
+          <tr>
+            <th width="50%">상황</th>
+            <th width="50%">선택</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>공개 문서로 연습하고 싶어요</td>
+            <td>✅ 외부 RAG (OpenAI)</td>
+          </tr>
+          <tr>
+            <td>고객 계약서를 검색하고 싶어요</td>
+            <td>✅ 사내 RAG (자체 AI)</td>
+          </tr>
+          <tr>
+            <td>제품 매뉴얼 Q&A를 만들고 싶어요</td>
+            <td>✅ 외부 RAG OK (공개 문서)</td>
+          </tr>
+          <tr>
+            <td>직원 인사 정보를 분석하고 싶어요</td>
+            <td>✅ 사내 RAG 필수 (민감 정보)</td>
+          </tr>
+          <tr>
+            <td>빠르게 프로토타입을 만들고 싶어요</td>
+            <td>✅ 외부 RAG (빠른 시작)</td>
+          </tr>
+          <tr>
+            <td>전사 배포용 서비스를 만들고 싶어요</td>
+            <td>✅ 사내 RAG (안정성)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-tip">
+      <span class="box-title">📚 다음 섹션 예고</span>
+      <p>
+        이제 <strong>실제로 사내 AI로 전환하는 방법</strong>을 실습해봅니다!<br />
+        Langflow에서 단 몇 번의 클릭만으로 사내 AI로 바꿀 수 있습니다. 😊
+      </p>
+    </div>
+
+
+    <h2>5. 사내 Agent Builder 사용하기 🆕</h2>
+    <p>
+      지금까지 <strong>외부 AI(OpenAI) + 로컬 Langflow</strong>로 기본기를 배웠습니다. 이제 실무에서 사용하는 <strong>사내 AI Agent 플랫폼</strong>으로 넘어갈 시간입니다!
+    </p>
+
+    <div class="box box-success">
+      <span class="box-title">🎉 좋은 소식!</span>
+      우리 회사에는 <strong>Agent Builder</strong>라는 Langflow 기반 클라우드 플랫폼이 이미 구축되어 있습니다!<br />
+      별도 설치 없이 웹 브라우저로 접속해서 바로 사용할 수 있습니다.
+    </div>
+
+    <h3>🤔 Agent Builder가 뭔가요?</h3>
+    <p>
+      <strong>Agent Builder</strong>는 회사가 자체적으로 운영하는 <strong>Langflow 클라우드 환경</strong>입니다. 
+      사내 AI 모델과 사내 벡터 DB가 이미 연결되어 있어, 민감한 회사 데이터를 안전하게 다룰 수 있습니다.
+    </p>
+
+    <h3>⚖️ 로컬 Langflow vs Agent Builder 비교</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="20%">구분</th>
+          <th width="40%">로컬 Langflow (학습용)</th>
+          <th width="40%">Agent Builder (실무용)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>설치 방법</strong></td>
+          <td>내 PC에 Python + Langflow 설치</td>
+          <td>✅ 설치 불필요 (웹 브라우저만 있으면 OK)</td>
+        </tr>
+        <tr>
+          <td><strong>AI 모델</strong></td>
+          <td>OpenAI (외부 서비스)</td>
+          <td>✅ 사내 AI 모델 (자동 연결됨)</td>
+        </tr>
+        <tr>
+          <td><strong>벡터 DB</strong></td>
+          <td>FAISS (내 PC에만 저장)</td>
+          <td>✅ 사내 벡터 DB (팀 공유 가능)</td>
+        </tr>
+        <tr>
+          <td><strong>데이터 보안</strong></td>
+          <td>⚠️ 외부로 전송 (OpenAI 서버)</td>
+          <td>✅ 회사 내부에서만 처리 (절대 외부 유출 없음)</td>
+        </tr>
+        <tr>
+          <td><strong>사용 가능 문서</strong></td>
+          <td>공개 문서만 (브로슈어, 공개 FAQ)</td>
+          <td>✅ 모든 문서 (계약서, 인사 정보, 재무 자료 포함)</td>
+        </tr>
+        <tr>
+          <td><strong>협업</strong></td>
+          <td>❌ 개인 PC에서만 작업</td>
+          <td>✅ 팀원과 프로젝트 공유 및 협업 가능</td>
+        </tr>
+        <tr>
+          <td><strong>배포</strong></td>
+          <td>❌ 별도 서버 필요</td>
+          <td>✅ 클릭 한 번으로 즉시 배포</td>
+        </tr>
+        <tr>
+          <td><strong>비용</strong></td>
+          <td>OpenAI 사용료 (토큰당 과금)</td>
+          <td>✅ 무료 (회사가 운영)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-tip">
+      <span class="box-title">💡 언제 뭘 써야 할까?</span>
+      <ul>
+        <li><strong>로컬 Langflow:</strong> 집에서 개인 연습, 새로운 기능 테스트, 공개 데이터 실험</li>
+        <li><strong>Agent Builder:</strong> 사무실 업무, 팀 프로젝트, 민감 데이터 처리, 실제 배포</li>
+      </ul>
+      <p style="margin-top: 10px">
+        <strong>💡 좋은 소식:</strong> 로컬 Langflow에서 배운 방법을 Agent Builder에서 <strong>그대로 사용</strong>할 수 있습니다!<br />
+        차이점은 단 2가지: ① OpenAI → Company LLM, ② FAISS → Company Vector Store
+      </p>
+    </div>
+
+    <h3>🚀 Agent Builder 시작하기</h3>
+
+    <h4>Step 1: 접속 및 로그인</h4>
+    <ol>
+      <li><span class="step-num">1</span>회사 인트라넷에서 <strong>Agent Builder</strong> 검색</li>
+      <li><span class="step-num">2</span>또는 직접 주소 입력: <code>http://agent-builder.company.com</code> (IT팀 확인)</li>
+      <li><span class="step-num">3</span>사내 계정(SSO)으로 로그인</li>
+    </ol>
+
+    <img
+      src="images/05-02_agent_builder_login.png"
+      alt="Agent Builder 로그인 화면"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 5-2. Agent Builder 로그인 화면 (SSO 인증)</div>
+
+    <h4>Step 2: 새 프로젝트 생성하기</h4>
+    <p>Agent Builder에서 <strong>처음부터 새로운 AI Agent</strong>를 만들어봅시다.</p>
+
+    <ol>
+      <li><span class="step-num">1</span>로그인 후 메인 화면에서 <code>New Project</code> 버튼 클릭</li>
+      <li><span class="step-num">2</span>프로젝트 이름 입력 (예: "인사규정 Q&A 봇")</li>
+      <li><span class="step-num">3</span>빈 캔버스(작업 화면)가 열림</li>
+    </ol>
+
+    <div class="box box-tip">
+      <span class="box-title">💡 로컬 Langflow와 똑같은 화면!</span>
+      Agent Builder의 캔버스는 로컬 Langflow와 <strong>거의 동일</strong>합니다.<br />
+      Part 3-4에서 배운 방법을 그대로 사용하면 됩니다!
+    </div>
+
+    <h4>Step 3: 사내 AI로 기본 챗봇 만들기</h4>
+    <p>Part 4에서 배운 <strong>요리 레시피 봇</strong>을 사내 AI로 만들어봅시다.</p>
+
+    <h5>🔹 컴포넌트 배치 및 연결</h5>
+    <div class="code-block">Chat Input → Prompt → Company LLM (사내 AI) → Chat Output</div>
+
+    <p><strong>중요한 차이점:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th width="30%">항목</th>
+          <th width="35%">로컬 Langflow</th>
+          <th width="35%">Agent Builder</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>AI 모델 블록</strong></td>
+          <td><code>OpenAI</code> 블록</td>
+          <td>✅ <code>Company LLM</code> 블록</td>
+        </tr>
+        <tr>
+          <td><strong>API Key 입력</strong></td>
+          <td>필수 (sk-...)</td>
+          <td>✅ 불필요 (자동 인증)</td>
+        </tr>
+        <tr>
+          <td><strong>Model Name</strong></td>
+          <td>gpt-4o-mini</td>
+          <td>✅ Company-LLM-v2 (자동 설정)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>🔹 Prompt 블록 설정 (Part 4와 동일)</h5>
+    <p>Prompt 블록의 <code>Template</code>에 다음 내용을 입력하세요:</p>
+    <div class="box box-success">
+      <span class="box-title">📝 프롬프트 템플릿</span>
+      당신은 20년 경력의 미슐랭 3스타 셰프입니다. 말투는 매우 정중하고 친절합니다.<br />
+      사용자가 냉장고에 있는 재료를 말하면, 그 재료로 만들 수 있는 최고의 요리 1가지를 추천하고 레시피를 단계별로
+      알려주세요.<br /><br />
+      사용자가 가진 재료: {user_message}
+    </div>
+
+    <h5>🔹 Company LLM 블록 설정</h5>
+    <p><code>Company LLM</code> 블록을 클릭하여 설정을 확인하세요:</p>
+    <ul>
+      <li><strong>Model Name:</strong> <code>Company-LLM-v2</code> (이미 자동 설정됨)</li>
+      <li><strong>Base URL:</strong> 사내 AI 서버 주소 (자동 입력됨, 수정 불필요)</li>
+      <li><strong>Temperature:</strong> <code>0.7</code> (창의성 조절)</li>
+    </ul>
+
+    <img
+      src="images/05-03_company_llm_settings.png"
+      alt="Agent Builder의 Company LLM 설정 화면"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 5-3. Company LLM 블록 설정 화면 (자동 인증됨)</div>
+
+    <h5>🔹 테스트</h5>
+    <ol>
+      <li><span class="step-num">1</span>⚡ Play 버튼 클릭하여 채팅창 열기</li>
+      <li><span class="step-num">2</span>"계란, 양파, 대파가 있어"라고 입력</li>
+      <li><span class="step-num">3</span>사내 AI가 레시피를 추천하는지 확인</li>
+    </ol>
+
+    <div class="box box-success">
+      <span class="box-title">🎉 첫 번째 사내 AI Agent 완성!</span>
+      이제 OpenAI 대신 <strong>회사 AI 모델</strong>이 작동하고 있습니다!<br />
+      로컬 Langflow와 거의 동일한 방법이죠? 😊
+    </div>
+
+    <h4>Step 4: 민감 문서 기반 RAG 만들기 (사내 전용)</h4>
+    <p>
+      이제 <strong>진짜 실무용</strong> Agent를 만들어봅시다!<br />
+      고객 계약서, 인사 규정 같은 <strong>민감한 문서</strong>를 안전하게 다루는 RAG를 구축합니다.
+    </p>
+
+    <h5>🎯 실습 목표: 인사 규정 Q&A 봇</h5>
+    <p><strong>시나리오:</strong> 직원들이 "연차는 몇 개?", "출장비는 어떻게 신청?" 같은 질문에 인사 규정 문서를 읽고 자동 답변</p>
+
+    <h5>🔹 컴포넌트 배치 및 연결</h5>
+    <div class="code-block">
+File Upload → Text Splitter → Company Vector Store → Retriever → Prompt → Company LLM → Chat Output
+    </div>
+
+    <p><strong>로컬 RAG와의 차이점:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th width="30%">컴포넌트</th>
+          <th width="35%">로컬 Langflow (Part 4)</th>
+          <th width="35%">Agent Builder (사내)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Vector Store</strong></td>
+          <td>FAISS (로컬 PC)</td>
+          <td>✅ <code>Company Vector Store</code> (사내 서버)</td>
+        </tr>
+        <tr>
+          <td><strong>AI 모델</strong></td>
+          <td>OpenAI (외부)</td>
+          <td>✅ <code>Company LLM</code> (사내)</td>
+        </tr>
+        <tr>
+          <td><strong>데이터 저장</strong></td>
+          <td>내 PC에만</td>
+          <td>✅ 사내 서버 (팀 공유 가능)</td>
+        </tr>
+        <tr>
+          <td><strong>사용 가능 문서</strong></td>
+          <td>공개 문서만</td>
+          <td>✅ 모든 민감 문서 OK</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>🔹 각 블록 설정하기</h5>
+
+    <p><strong>① File Upload 블록:</strong></p>
+    <ul>
+      <li>민감 문서 업로드 (예: 인사규정.pdf, 고객계약서.docx)</li>
+      <li>✅ 이 문서는 외부로 절대 전송되지 않음 (사내 서버에만 저장)</li>
+    </ul>
+
+    <p><strong>② Text Splitter 블록:</strong></p>
+    <ul>
+      <li><strong>Chunk Size:</strong> <code>500</code> (Part 4와 동일)</li>
+      <li><strong>Chunk Overlap:</strong> <code>50</code></li>
+    </ul>
+
+    <p><strong>③ Company Vector Store 블록:</strong></p>
+    <ul>
+      <li>특별한 설정 불필요 (자동으로 사내 벡터 DB 연결)</li>
+      <li><strong>저장 위치:</strong> 회사 Pinecone/Weaviate 서버 (IT팀이 관리)</li>
+    </ul>
+
+    <div class="box box-important">
+      <span class="box-title">⚠️ 중요!</span>
+      <strong>Company Vector Store에 저장된 문서는 팀 전체가 공유합니다!</strong><br />
+      • ✅ 장점: 한 번 업로드하면 팀원 모두가 검색 가능<br />
+      • ⚠️ 주의: 민감한 자료는 접근 권한 확인 필수 (IT팀 문의)<br />
+      • 💡 팁: 프로젝트 이름에 "인사팀 전용", "영업팀 전용" 등 명시 권장
+    </div>
+
+    <p><strong>④ Retriever 블록:</strong></p>
+    <ul>
+      <li><strong>Top K:</strong> <code>3</code> (관련 문서 조각 3개 검색)</li>
+    </ul>
+
+    <p><strong>⑤ Prompt 블록:</strong></p>
+    <div class="box box-success">
+      <span class="box-title">📝 RAG 프롬프트 템플릿</span>
+당신은 회사 인사 규정 안내 담당자입니다.<br />
+아래 문서 내용을 <strong>반드시 참고</strong>하여 질문에 답변하세요.<br />
+문서에 없는 내용은 "해당 정보는 규정서에 없습니다. 인사팀에 문의하세요."라고 말하세요.<br /><br />
+
+[참고 문서]<br />
+{context}<br /><br />
+
+[직원 질문]<br />
+{question}
+    </div>
+
+    <p><strong>⑥ Company LLM 블록:</strong></p>
+    <ul>
+      <li>자동 설정됨 (별도 수정 불필요)</li>
+    </ul>
+
+    <h5>🔹 테스트 및 배포</h5>
+    <ol>
+      <li><span class="step-num">1</span>⚡ Play 버튼을 눌러 채팅창 실행</li>
+      <li><span class="step-num">2</span>질문 입력: <strong>"우리 회사 연차는 몇 개야?"</strong></li>
+      <li><span class="step-num">3</span>사내 AI가 인사 규정 문서를 읽고 정확하게 답변하는지 확인</li>
+      <li><span class="step-num">4</span>정상 작동 확인 후 상단의 <code>Deploy</code> 버튼 클릭</li>
+      <li><span class="step-num">5</span>배포된 Agent는 팀원들도 사용 가능한 <strong>공유 링크</strong>가 생성됨</li>
+    </ol>
+
+    <img
+      src="images/05-04_rag_chat_result.png"
+      alt="사내 RAG 챗봇 테스트 결과"
+      style="width: 100%; max-width: 800px; border: 1px solid #cbd5e0; margin: 20px 0; display: block"
+    />
+    <div class="img-caption">그림 5-4. 인사 규정 문서를 읽고 자동 답변하는 사내 AI Agent</div>
+
+    <div class="box box-success">
+      <span class="box-title">🎉 축하합니다!</span>
+      이제 여러분의 AI Agent가 <strong>회사 공식 시스템</strong>에서 작동합니다!<br />
+      • ✅ 민감한 고객 정보도 안전하게 처리 가능<br />
+      • ✅ 팀원들과 공유하고 협업 가능<br />
+      • ✅ 실제 업무에 바로 활용 가능<br /><br />
+      팀원들과 공유하고, 실제 업무에 활용해보세요. 😊
+    </div>
+
+    <h4>Step 5: 로컬 연습 vs 사내 실무 비교 정리</h4>
+    <div class="box box-tip">
+      <span class="box-title">💡 학습 전략 요약</span>
+      <p>
+        <strong>1단계 (학습):</strong> 로컬 Langflow + OpenAI<br />
+        → 집에서 편하게 연습, 공개 데이터로 실험<br /><br />
+        <strong>2단계 (실무 전환):</strong> Agent Builder + 사내 AI<br />
+        → 회사에서 민감 데이터 안전하게 처리<br /><br />
+        <strong>핵심:</strong> 방법은 거의 동일! 블록만 바뀝니다 (OpenAI → Company LLM, FAISS → Company Vector Store)
+      </p>
+    </div>
+
+    <h2>6. 학습 로드맵: 로컬 → 사내 전환 전략</h2>
+    <p>
+      지금까지 배운 내용을 정리하고, <strong>실무 적용을 위한 단계별 로드맵</strong>을 제시합니다.
+    </p>
+
+    <h3>🎯 3단계 학습 전략</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="15%">단계</th>
+          <th width="25%">환경</th>
+          <th width="30%">학습 목표</th>
+          <th width="30%">예시 프로젝트</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1단계<br />(학습)</strong></td>
+          <td>로컬 Langflow<br />+ OpenAI</td>
+          <td>
+            • Langflow 기본 조작법<br />
+            • 블록 연결 및 데이터 흐름<br />
+            • 프롬프트 작성 기술
+          </td>
+          <td>
+            • 요리 레시피 봇<br />
+            • 번역 봇<br />
+            • 공개 문서 Q&A (브로슈어)
+          </td>
+        </tr>
+        <tr>
+          <td><strong>2단계<br />(전환)</strong></td>
+          <td>Agent Builder<br />(사내 클라우드)</td>
+          <td>
+            • 프로젝트 Import 방법<br />
+            • 자동 모델 전환 이해<br />
+            • 사내 벡터 DB 활용
+          </td>
+          <td>
+            • 1단계 프로젝트를 Agent Builder로 옮기기<br />
+            • 팀원과 공유 테스트
+          </td>
+        </tr>
+        <tr>
+          <td><strong>3단계<br />(실무)</strong></td>
+          <td>Agent Builder<br />(실전 배포)</td>
+          <td>
+            • 민감 데이터 안전 처리<br />
+            • 팀 협업 프로젝트<br />
+            • 배포 및 유지보수
+          </td>
+          <td>
+            • 인사 규정 Q&A 봇<br />
+            • 고객 계약서 검색<br />
+            • 부서별 업무 자동화
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>⚖️ 환경별 사용 가이드</h3>
+    <div class="box box-success">
+      <span class="box-title">✅ 로컬 Langflow를 써야 할 때</span>
+      <ul>
+        <li>🏠 <strong>집에서 연습:</strong> 회사 네트워크 외부에서 학습</li>
+        <li>🧪 <strong>실험 프로젝트:</strong> 새로운 기능이나 아이디어 테스트</li>
+        <li>📘 <strong>공개 데이터:</strong> 이미 공개된 자료로 작업 (뉴스, 위키백과 등)</li>
+        <li>⚡ <strong>빠른 프로토타입:</strong> 아이디어 검증용 간단한 봇</li>
+      </ul>
+    </div>
+
+    <div class="box box-success">
+      <span class="box-title">✅ Agent Builder를 써야 할 때</span>
+      <ul>
+        <li>🏢 <strong>사무실 업무:</strong> 회사 네트워크에서 실제 업무 처리</li>
+        <li>🔒 <strong>민감 데이터:</strong> 고객 정보, 계약서, 인사 자료 등</li>
+        <li>👥 <strong>팀 협업:</strong> 여러 사람이 함께 작업하는 프로젝트</li>
+        <li>🚀 <strong>실전 배포:</strong> 실제로 사용할 서비스를 만들 때</li>
+        <li>📊 <strong>사내 문서 RAG:</strong> 회사 내부 문서 기반 Q&A 시스템</li>
+      </ul>
+    </div>
+
+    <h3>❌ 절대 금지 사항</h3>
+    <div class="box box-important">
+      <span class="box-title">⚠️ 로컬 Langflow(외부 AI)에 절대 올리면 안 되는 것</span>
+      <ul>
+        <li>❌ <strong>개인정보:</strong> 고객 이름, 연락처, 주민등록번호, 이메일</li>
+        <li>❌ <strong>재무 데이터:</strong> 매출, 손익, 예산, 회계 장부</li>
+        <li>❌ <strong>계약 정보:</strong> 계약서, 제안서, NDA, 특허 출원 자료</li>
+        <li>❌ <strong>인사 정보:</strong> 연봉, 평가, 징계, 조직도</li>
+        <li>❌ <strong>보안 정보:</strong> 비밀번호, API 키, 서버 주소, 관리자 계정</li>
+        <li>❌ <strong>미공개 정보:</strong> 신제품 기획, M&A 검토, 전략 문서</li>
+      </ul>
+      <p>
+        <strong>💡 간단한 판단 기준:</strong><br />
+        "이 내용이 내일 신문 1면에 나와도 괜찮은가?"<br />
+        → <strong>아니라면 반드시 Agent Builder 사용!</strong>
+      </p>
+    </div>
+
+    <h3>📝 실무 체크리스트</h3>
+    <p>프로젝트를 시작하기 전에 다음을 확인하세요:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th width="50%">체크 항목</th>
+          <th width="25%">로컬 Langflow</th>
+          <th width="25%">Agent Builder</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>사용할 데이터에 민감 정보가 포함되어 있나요?</td>
+          <td>❌ 사용 불가</td>
+          <td>✅ 사용 가능</td>
+        </tr>
+        <tr>
+          <td>다른 팀원과 협업이 필요한가요?</td>
+          <td>⚠️ 제한적</td>
+          <td>✅ 권장</td>
+        </tr>
+        <tr>
+          <td>완성 후 실제 배포할 계획인가요?</td>
+          <td>❌ 불가</td>
+          <td>✅ 가능</td>
+        </tr>
+        <tr>
+          <td>벡터 DB에 저장한 문서를 팀이 공유해야 하나요?</td>
+          <td>❌ 불가 (FAISS 로컬)</td>
+          <td>✅ 가능 (사내 DB)</td>
+        </tr>
+        <tr>
+          <td>집에서 개인적으로 연습하는 중인가요?</td>
+          <td>✅ 권장</td>
+          <td>⚠️ VPN 필요</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-tip">
+      <span class="box-title">💡 전환 팁</span>
+      <p>
+        <strong>처음부터 Agent Builder에서 시작하면 안 되나요?</strong><br />
+        → 가능하지만, 로컬 Langflow에서 먼저 연습하는 것을 추천합니다!<br /><br />
+        <strong>이유:</strong><br />
+        • 실수해도 회사 시스템에 영향 없음<br />
+        • OpenAI의 최신 기능 테스트 가능<br />
+        • 집에서도 자유롭게 연습<br />
+        • 익숙해진 후 Agent Builder로 전환이 더 효율적
+      </p>
+    </div>
+
+    <!-- Appendix -->
+    <h1 id="appendix">부록: 용어 정리 및 Q&A</h1>
+
+    <h3>📖 필수 용어집</h3>
+    <ul>
+      <li>
+        <strong>LLM (Large Language Model):</strong> 거대 언어 모델. 엄청난 양의 텍스트를 학습하여 사람처럼 글을 쓰고
+        이해하는 AI (예: GPT-4).
+      </li>
+      <li><strong>Prompt (프롬프트):</strong> AI에게 입력을 주는 명령어. 질문, 지시사항, 예시 등이 포함됩니다.</li>
+      <li>
+        <strong>Token (토큰):</strong> AI가 글자를 처리하는 기본 단위. 대략 영어 단어 하나가 1.3 토큰, 한글 한 글자가
+        1~2 토큰 정도입니다.
+      </li>
+      <li>
+        <strong>Temperature (온도):</strong> AI의 창의성을 조절하는 설정값. 0에 가까우면 정해진 답만 하고, 1에 가까우면
+        창의적(가끔 엉뚱함)이 됩니다.
+      </li>
+      <li>
+        <strong>RAG (Retrieval-Augmented Generation):</strong> AI에게 문서를 참고 자료로 제공하여 답변의 정확도를 높이는 기술. "AI에게 참고서를 주는 것"과 같습니다.
+      </li>
+      <li>
+        <strong>Vector Store (벡터 저장소):</strong> 문서를 검색 가능한 형태(벡터)로 변환하여 저장하는 데이터베이스. FAISS, Pinecone, Weaviate 등이 있습니다.
+      </li>
+      <li>
+        <strong>FAISS:</strong> Facebook이 만든 로컬 벡터 검색 엔진. 내 PC에만 저장되며, 실습용으로 적합합니다.
+      </li>
+      <li>
+        <strong>Agent Builder:</strong> 우리 회사가 운영하는 Langflow 기반 클라우드 플랫폼. 사내 AI와 사내 벡터 DB가 연결되어 있어 민감 데이터를 안전하게 처리할 수 있습니다.
+      </li>
+      <li>
+        <strong>Embedding (임베딩):</strong> 텍스트를 숫자(벡터)로 변환하는 과정. 비슷한 의미의 단어는 비슷한 숫자로 표현되어 AI가 의미를 이해할 수 있게 합니다.
+      </li>
+      <li>
+        <strong>SSO (Single Sign-On):</strong> 하나의 계정으로 여러 시스템에 로그인하는 방식. Agent Builder는 회사 SSO 계정으로 접속합니다.
+      </li>
+    </ul>
+
+    <h3>❓ 자주 묻는 질문 (Q&A)</h3>
+    <div class="box box-tip">
+      <span class="box-title">Q. 코딩을 전혀 못해도 괜찮나요?</span>
+      A. 네! Langflow는 코딩 없이 마우스 클릭만으로 AI를 만들 수 있도록 설계되었습니다.
+    </div>
+
+    <div class="box box-tip">
+      <span class="box-title">Q. 만든 AI를 스마트폰에서도 쓸 수 있나요?</span>
+      A. Agent Builder로 배포하면 스마트폰 브라우저에서도 접속 가능합니다! 공유 링크를 카카오톡으로 보내면 모바일에서도 사용할 수 있습니다.
+    </div>
+
+    <div class="box box-tip">
+      <span class="box-title">Q. Agent Builder는 꼭 사무실에서만 접속 가능한가요?</span>
+      A. 회사 네트워크 정책에 따라 다릅니다. 일반적으로는 VPN을 통해 집에서도 접속 가능하니 IT팀에 문의하세요.
+    </div>
+
+    <div class="box box-tip">
+      <span class="box-title">Q. 로컬 Langflow에서 만든 프로젝트를 Agent Builder로 옮기면 다시 설정해야 하나요?</span>
+      A. 아닙니다! Import만 하면 AI 모델과 벡터 DB가 <strong>자동으로 사내 환경으로 전환</strong>됩니다. 프롬프트와 흐름은 그대로 유지됩니다!
+    </div>
+
+    <div class="box box-tip">
+      <span class="box-title">Q. FAISS에 저장한 문서도 Agent Builder로 자동 이동되나요?</span>
+      A. 네! Import 시 문서도 함께 업로드되어 사내 벡터 DB에 자동으로 저장됩니다. 단, 민감한 문서인 경우 사내 규정을 확인하세요.
+    </div>
+
+    <div class="box box-tip">
+      <span class="box-title">Q. Agent Builder 사용에 비용이 드나요?</span>
+      A. 회사가 운영하는 시스템이므로 직원은 <strong>무료</strong>로 사용할 수 있습니다! OpenAI처럼 토큰당 과금도 없습니다.
+    </div>
+
+    <div class="box box-tip">
+      <span class="box-title">Q. 공개 문서(브로슈어)도 Agent Builder에서 써야 하나요?</span>
+      A. 꼭 그럴 필요는 없습니다. 개인 연습이나 공개 데이터는 로컬 Langflow를 써도 괜찮아요. 다만 <strong>팀과 공유하거나 배포할 계획</strong>이라면 Agent Builder를 권장합니다.
+    </div>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9bc2c0779b12d1f1","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.9.1","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
