@@ -1,6 +1,10 @@
 site_name: Agent Builder Documentation
 site_description: AI 생성 문서 자동화 시스템
 site_author: miniforce1119
+site_url: https://miniforce1119.github.io/Documents/
+repo_url: https://github.com/miniforce1119/Documents
+repo_name: miniforce1119/Documents
+edit_uri: edit/main/agent-builder-automation/docs/
 
 theme:
   name: material
