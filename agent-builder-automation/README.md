@@ -1,15 +1,33 @@
-# Agent Builder to MkDocs Automation
+# AI Document Review & Publish System
 
-Agent Builder 결과를 자동으로 파싱하여 MkDocs 문서 저장소에 반영하는 Python 스크립트입니다.
+AI 생성 문서를 검토하고 발행하는 **2-Mode 문서화 시스템**입니다.
 
-## 🎯 주요 기능
+## 🎯 핵심 철학
 
-- ✅ Agent Builder Export 결과 자동 파싱 (TITLE/FILENAME/CONTENT)
-- ✅ MkDocs `docs/` 폴더에 Markdown 파일 저장
-- ✅ Git 자동화 (add/commit/push)
-- ✅ MkDocs build/serve 자동 실행
-- ✅ 파일명 sanitize 및 중복 처리
-- ✅ Dry-run 모드 지원
+> "AI 생성 지식을 문서 자산으로 변환하는 검토/발행 시스템"
+
+단순 저장 도구가 아닌, 유용한 AI 결과를 선별하고 정규화하여 축적하는 시스템입니다.
+
+## ⚡ 2-Mode 시스템
+
+### **Mode A: Agent Builder Direct Import**
+- 사내 Agent Builder의 정형화된 결과 직접 처리
+- `TITLE` / `FILENAME` / `CONTENT` 포맷
+
+### **Mode B: External AI Reformat**
+- ChatGPT/Claude 등 외부 AI 결과 재구성
+- 자유 형식 텍스트 → 표준 Markdown 문서
+
+**두 모드 모두 동일한 표준 포맷으로 정규화됩니다.**
+
+## 🚀 주요 기능
+
+- ✅ **2가지 입력 모드** (정형/비정형)
+- ✅ **Inbox/Review/Publish 워크플로우**
+- ✅ **Streamlit 기반 UI** (검토 중심 UX)
+- ✅ **자동 Git 통합** (commit/push)
+- ✅ **GitHub Pages 자동 배포** (MkDocs)
+- ✅ **실시간 Preview** (Markdown 렌더링)
 
 ## 📦 필수 요구사항
 
@@ -23,23 +41,37 @@ pip install mkdocs mkdocs-material
 
 ## 🚀 빠른 시작
 
-### 1. 테스트 문서 생성
+### 1. 필수 패키지 설치
 
 ```bash
-python create_test_doc.py "나의 첫 문서" analysis
+pip install streamlit mkdocs mkdocs-material
 ```
 
-### 2. 문서 저장 및 배포
+### 2. Streamlit 앱 실행
 
 ```bash
-# Dry-run으로 미리보기
-python export_agent_to_docs.py --input test_나의-첫-문서.txt --category analysis --dry-run
+cd agent-builder-automation
+streamlit run doc_review_app.py
+```
 
-# 파일만 저장 (git 제외)
-python export_agent_to_docs.py --input test_나의-첫-문서.txt --category analysis --skip-git
+### 3. 브라우저에서 접속
 
-# 전체 workflow 실행
-python export_agent_to_docs.py --input test_나의-첫-문서.txt --category analysis
+- **Streamlit 앱:** http://localhost:8501
+- **MkDocs 서버:** http://localhost:8000 (선택사항)
+
+### 4. 문서 생성 워크플로우
+
+```
+1. "📥 Save to Inbox" 탭 클릭
+2. 입력 모드 선택:
+   - "Agent Builder (정형)"
+   - "외부 AI (재구성)"
+3. 텍스트 붙여넣기
+4. Parse/Reformat & Preview
+5. Save to Inbox
+6. "📋 Review Inbox"에서 검토
+7. "🚀 Publish" 클릭
+8. 자동으로 GitHub Pages 배포!
 ```
 
 ## 📖 사용 방법

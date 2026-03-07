@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 """
-Agent Builder Document Review & Publish App
-Streamlit 기반 문서 검토 및 발행 도구
+AI Document Review & Publish System
+
+Two-Mode Documentation System:
+- Mode A: Agent Builder Direct Import (formatted)
+- Mode B: External AI Reformat (free-form text)
+
+Both modes converge to normalized format:
+  TITLE: ...
+  FILENAME: ...
+  CONTENT: # Markdown...
 """
 
 import streamlit as st
@@ -29,7 +37,7 @@ PUBLISHED_DIR.mkdir(exist_ok=True)
 
 
 def parse_agent_output(text: str) -> tuple[str, str, str]:
-    """Agent Builder 출력 파싱"""
+    """Agent Builder 출력 파싱 (Mode A)"""
     pattern = re.compile(
         r"TITLE:\s*(?P<title>.*?)\s*FILENAME:\s*(?P<filename>.*?)\s*CONTENT:\s*(?P<content>.*)",
         re.DOTALL,
@@ -43,6 +51,72 @@ def parse_agent_output(text: str) -> tuple[str, str, str]:
         match.group("filename").strip(),
         match.group("content").strip()
     )
+
+
+def detect_input_mode(text: str) -> str:
+    """입력 모드 자동 감지"""
+    if "TITLE:" in text and "FILENAME:" in text and "CONTENT:" in text:
+        return "agent_builder"
+    return "external_ai"
+
+
+def reformat_external_text(text: str) -> tuple[str, str, str]:
+    """
+    외부 AI 텍스트를 표준 Markdown 문서로 재구성 (Mode B)
+    
+    TODO (for Cline at company):
+    이 함수를 사내 Reformat Agent API로 교체:
+    
+    def reformat_external_text(text: str) -> tuple[str, str, str]:
+        import requests
+        response = requests.post(
+            "https://company-agent-builder.com/api/reformat",
+            headers={"Authorization": f"Bearer {AGENT_API_KEY}"},
+            json={"input": text, "output_format": "markdown_document"}
+        )
+        result = response.json()
+        return (result["title"], result["filename"], result["content"])
+    """
+    # Mock implementation for testing
+    lines = text.strip().split('\n')
+    
+    # 제목 추출 (첫 줄 또는 # 헤더)
+    title = lines[0].strip('#').strip() if lines else "Untitled Document"
+    
+    # 파일명 생성
+    filename = sanitize_filename(title)
+    
+    # Markdown 변환
+    content = f"# {title}\n\n"
+    content += f"> 생성일: {datetime.now().strftime('%Y-%m-%d')}\n"
+    content += f"> 출처: 외부 AI\n\n"
+    
+    # 본문 처리
+    in_code_block = False
+    for i, line in enumerate(lines[1:] if len(lines) > 1 else lines):
+        line = line.rstrip()
+        
+        # 코드 블록 감지
+        if line.startswith('```') or line.startswith('    '):
+            in_code_block = not in_code_block
+        
+        # 구조화
+        if not in_code_block:
+            # 숫자로 시작하는 줄 → 서브헤더
+            if re.match(r'^\d+\.\s+', line):
+                content += f"\n## {line}\n"
+            # 짧은 줄 뒤에 긴 설명 → 리스트
+            elif line and not line.startswith('#'):
+                if len(line) < 50 and i + 1 < len(lines) and lines[i + 1]:
+                    content += f"\n### {line}\n\n"
+                else:
+                    content += f"{line}\n"
+            else:
+                content += f"{line}\n"
+        else:
+            content += f"{line}\n"
+    
+    return (title, filename, content)
 
 
 def sanitize_filename(filename: str) -> str:
@@ -150,29 +224,37 @@ def get_mkdocs_url(category: str, filename: str) -> str:
 
 
 # Streamlit UI
-st.title("📝 Document Review & Publish")
-st.markdown("Agent Builder 문서 검토 및 발행 시스템")
+st.title("📝 AI Document Review & Publish")
+st.markdown("AI 생성 문서 검토 및 발행 시스템 (2-Mode)")
 
 # 탭 구성
 tab1, tab2, tab3 = st.tabs(["📥 Save to Inbox", "📋 Review Inbox", "📊 Published Docs"])
 
 # Tab 1: Save to Inbox
 with tab1:
-    st.header("📥 Agent 결과를 Inbox에 저장")
+    st.header("📥 AI 결과를 Inbox에 저장")
     
-    st.markdown("""
-    ### 사용 방법
-    1. Agent Builder 결과를 복사
-    2. 아래에 붙여넣기
-    3. Preview 확인
-    4. Save to Inbox 클릭
-    """)
+    # 입력 모드 선택
+    input_mode = st.radio(
+        "입력 모드 선택",
+        ["Agent Builder (정형)", "외부 AI (재구성)"],
+        horizontal=True,
+        help="Agent Builder: 정형화된 TITLE/FILENAME/CONTENT 포맷\n외부 AI: ChatGPT/Claude 등 자유 텍스트"
+    )
     
-    # 입력 영역
-    agent_output = st.text_area(
-        "Agent Builder 결과 붙여넣기",
-        height=200,
-        placeholder="""TITLE:
+    if input_mode == "Agent Builder (정형)":
+        st.markdown("""
+        ### 📋 Mode A: Agent Builder Direct Import
+        1. 사내 Agent Builder 결과 복사
+        2. 아래에 붙여넣기 (TITLE/FILENAME/CONTENT 포맷)
+        3. Parse & Preview
+        4. Save to Inbox
+        """)
+        
+        agent_output = st.text_area(
+            "Agent Builder 결과 붙여넣기",
+            height=200,
+            placeholder="""TITLE:
 문서 제목
 
 FILENAME:
@@ -180,26 +262,64 @@ FILENAME:
 
 CONTENT:
 # Markdown 내용
-..."""
-    )
+...""",
+            key="agent_input"
+        )
+        
+        button_label = "🔍 Parse & Preview"
+        
+    else:  # 외부 AI
+        st.markdown("""
+        ### 🔄 Mode B: External AI Reformat
+        1. ChatGPT/Claude 등 외부 AI 답변 복사
+        2. 아래에 붙여넣기 (자유 형식)
+        3. Reformat & Preview (자동으로 표준 포맷으로 변환)
+        4. Save to Inbox
+        
+        **Note:** 회사에서는 사내 Reformat Agent가 더 정교하게 변환합니다.
+        """)
+        
+        agent_output = st.text_area(
+            "외부 AI 결과 붙여넣기",
+            height=200,
+            placeholder="""예시:
+
+Python 최적화 팁
+
+1. 리스트 컴프리헨션 사용
+빠르고 간결한 코드 작성 가능
+
+2. 제너레이터 활용
+메모리 효율적인 처리
+
+...""",
+            key="external_input"
+        )
+        
+        button_label = "🔄 Reformat & Preview"
     
     col1, col2 = st.columns(2)
     
     with col1:
-        if st.button("🔍 Parse & Preview", type="primary"):
+        if st.button(button_label, type="primary"):
             if agent_output:
                 try:
-                    title, filename, content = parse_agent_output(agent_output)
+                    if input_mode == "Agent Builder (정형)":
+                        title, filename, content = parse_agent_output(agent_output)
+                    else:
+                        title, filename, content = reformat_external_text(agent_output)
+                    
                     st.session_state['parsed'] = {
                         'title': title,
                         'filename': filename,
-                        'content': content
+                        'content': content,
+                        'mode': input_mode
                     }
-                    st.success("✅ 파싱 성공!")
-                except ValueError as e:
-                    st.error(f"❌ 파싱 실패: {str(e)}")
+                    st.success(f"✅ 처리 성공! (Mode: {input_mode})")
+                except Exception as e:
+                    st.error(f"❌ 처리 실패: {str(e)}")
             else:
-                st.warning("⚠️ Agent 결과를 입력해주세요.")
+                st.warning("⚠️ 텍스트를 입력해주세요.")
     
     # Preview 영역
     if 'parsed' in st.session_state:
@@ -214,6 +334,7 @@ CONTENT:
             st.markdown("**메타데이터**")
             st.write(f"**제목:** {parsed['title']}")
             st.write(f"**파일명:** {parsed['filename']}")
+            st.write(f"**입력 모드:** {parsed.get('mode', 'N/A')}")
             
             category = st.selectbox(
                 "카테고리",
