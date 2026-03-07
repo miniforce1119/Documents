@@ -128,14 +128,18 @@ def publish_document(inbox_file: Path, category: str, title: str, filename: str)
 
 
 def git_commit_and_push(message: str):
-    """Git commit 및 push"""
+    """Git commit 및 push, 그리고 GitHub Pages 자동 배포"""
     try:
         subprocess.run(["git", "add", "."], cwd=BASE_DIR, check=True)
         subprocess.run(["git", "commit", "-m", message], cwd=BASE_DIR, check=True)
         subprocess.run(["git", "push"], cwd=BASE_DIR, check=True)
-        return True, "Git push 성공!"
+        
+        # GitHub Pages 자동 배포
+        subprocess.run(["mkdocs", "gh-deploy", "--force"], cwd=BASE_DIR, check=True)
+        
+        return True, "Git push 및 GitHub Pages 배포 완료!"
     except subprocess.CalledProcessError as e:
-        return False, f"Git 오류: {str(e)}"
+        return False, f"오류: {str(e)}"
 
 
 def get_mkdocs_url(category: str, filename: str) -> str:
