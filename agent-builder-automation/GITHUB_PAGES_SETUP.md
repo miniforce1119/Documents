@@ -15,6 +15,9 @@
 
 ### 📋 GitHub 저장소 설정
 
+> **✅ gh-pages 브랜치 생성 완료!**  
+> `mkdocs gh-deploy` 명령으로 이미 gh-pages 브랜치가 생성되었습니다.
+
 #### 1단계: GitHub Pages 활성화
 
 1. GitHub 저장소 페이지로 이동
@@ -26,9 +29,11 @@
 
 4. **Source** 섹션에서:
    - **Deploy from a branch** 선택
-   - **Branch**: `gh-pages` 선택
+   - **Branch**: `gh-pages` 선택 ← **이제 선택 가능합니다!**
    - **Folder**: `/ (root)` 선택
    - **Save** 클릭
+
+> **참고**: 만약 gh-pages 브랜치가 보이지 않으면 페이지를 새로고침하세요.
 
 #### 2단계: GitHub Actions 권한 확인
 
