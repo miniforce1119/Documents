@@ -138,6 +138,13 @@ def git_commit_and_push(message: str):
         return False, f"Git 오류: {str(e)}"
 
 
+def get_mkdocs_url(category: str, filename: str) -> str:
+    """MkDocs 문서 URL 생성"""
+    # 로컬 개발 서버 URL (기본 포트 8000)
+    base_url = "https://8000-i395tla92yet3fwt6gb1m-5185f4aa.sandbox.novita.ai/Documents"
+    return f"{base_url}/{category}/{filename}/"
+
+
 # Streamlit UI
 st.title("📝 Document Review & Publish")
 st.markdown("Agent Builder 문서 검토 및 발행 시스템")
@@ -308,6 +315,9 @@ with tab2:
                         )
                         st.success(f"✅ 발행 완료: {docs_file}")
                         
+                        # MkDocs URL 생성
+                        mkdocs_url = get_mkdocs_url(publish_category, publish_filename)
+                        
                         # Git push
                         if st.checkbox("Git push", value=True):
                             success, message = git_commit_and_push(
@@ -318,7 +328,19 @@ with tab2:
                             else:
                                 st.warning(message)
                         
-                        st.rerun()
+                        # MkDocs 문서 링크 표시
+                        st.markdown("---")
+                        st.markdown("### 📖 발행된 문서 확인")
+                        st.link_button(
+                            "🌐 MkDocs에서 보기",
+                            mkdocs_url,
+                            use_container_width=True
+                        )
+                        st.info(f"💡 MkDocs 서버가 실행 중이어야 합니다. (포트 8000)")
+                        
+                        # 자동 새로고침 대신 수동으로 제어
+                        if st.button("✅ 완료"):
+                            st.rerun()
                     except Exception as e:
                         st.error(f"❌ 발행 실패: {str(e)}")
             
