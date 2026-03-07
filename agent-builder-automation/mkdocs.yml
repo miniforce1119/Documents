@@ -54,13 +54,6 @@ markdown_extensions:
   - md_in_html
   - tables
 
-nav:
-  - Home: index.md
-  - 분석 문서:
-      - analysis/mkdocs-documentation-workflow.md
-  - 가이드:
-      - guides/agent-builder.md
-
 extra:
   social:
     - icon: fontawesome/brands/github
