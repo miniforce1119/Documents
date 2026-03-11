@@ -71,7 +71,7 @@
 
 ## 2. AI의 종류와 발전 단계
 
-![AI, 머신러닝, 딥러닝 관계도](https://www.genspark.ai/api/files/s/6i2x1DUR)
+![AI, 머신러닝, 딥러닝 관계도](https://www.genspark.ai/api/files/s/kDhJ6L9F)
 *그림 1: AI, 머신러닝, 딥러닝의 관계*
 
 ### 2.1 AI의 3단계
@@ -97,7 +97,7 @@
 
 ### 2.2 AI 기술의 발전 타임라인
 
-![AI 발전 타임라인](https://www.genspark.ai/api/files/s/7zQMZFKD)
+![AI 발전 타임라인](https://www.genspark.ai/api/files/s/K5sEPqMD)
 *그림 2: AI 기술의 주요 이정표*
 
 ```
@@ -129,7 +129,7 @@
 
 ### 3.2 학습 방식 3가지
 
-![머신러닝 학습 방식](https://www.genspark.ai/api/files/s/0c4NQdLX)
+![머신러닝 학습 방식](https://www.genspark.ai/api/files/s/QIxutgRO)
 *그림 3: 지도 학습, 비지도 학습, 강화 학습 비교*
 
 #### **1) 지도 학습 (Supervised Learning)** 👨‍🏫
