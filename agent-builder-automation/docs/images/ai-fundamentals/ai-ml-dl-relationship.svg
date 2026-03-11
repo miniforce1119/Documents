@@ -1,0 +1,26 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .circle { fill: none; stroke-width: 3; }
+      .text { font-family: Arial, sans-serif; text-anchor: middle; }
+      .large { font-size: 24px; font-weight: bold; }
+      .small { font-size: 16px; }
+    </style>
+  </defs>
+  
+  <!-- AI (가장 큰 원) -->
+  <circle cx="400" cy="225" r="200" class="circle" stroke="#3498db" fill="#e3f2fd" opacity="0.7"/>
+  <text x="400" y="100" class="text large" fill="#2c3e50">AI</text>
+  <text x="400" y="130" class="text small" fill="#7f8c8d">(인공지능)</text>
+  
+  <!-- Machine Learning (중간 원) -->
+  <circle cx="400" cy="225" r="130" class="circle" stroke="#27ae60" fill="#d4edda" opacity="0.7"/>
+  <text x="400" y="200" class="text large" fill="#2c3e50">Machine Learning</text>
+  <text x="400" y="225" class="text small" fill="#7f8c8d">(머신러닝)</text>
+  
+  <!-- Deep Learning (작은 원) -->
+  <circle cx="400" cy="225" r="70" class="circle" stroke="#e67e22" fill="#ffe5d0" opacity="0.9"/>
+  <text x="400" y="280" class="text large" fill="#2c3e50">Deep</text>
+  <text x="400" y="305" class="text large" fill="#2c3e50">Learning</text>
+  <text x="400" y="330" class="text small" fill="#7f8c8d">(딥러닝)</text>
+</svg>
