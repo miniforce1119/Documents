@@ -1,8 +1,8 @@
 # 📦 다운로드 가이드
 
-> **최신 버전:** v1.1 ⭐ (이미지 URL 수정)  
+> **최신 버전:** v1.2 ⭐ (SVG 이미지 포함 - 완전판)  
 > **업데이트:** 2026-03-11  
-> **포함 내용:** AI 입문 문서 + 전체 문서화 시스템
+> **포함 내용:** AI 입문 문서 + SVG 이미지 + 전체 문서화 시스템
 
 ---
 
@@ -10,19 +10,26 @@
 
 ### ✅ 압축 파일 다운로드 (최신 버전)
 
-**v1.1 다운로드 (추천):**
+**v1.2 Complete 다운로드 (추천!) 🎯**
+```
+https://github.com/miniforce1119/Documents/raw/main/agent-builder-automation/releases/docs-automation-v1.2-complete.tar.gz
+```
+→ **이미지 파일 포함** (SVG 형식, 오프라인 사용 가능)
+
+**v1.1 다운로드**
 ```
 https://github.com/miniforce1119/Documents/raw/main/agent-builder-automation/releases/docs-automation-v1.1.tar.gz
 ```
+→ 이미지 외부 URL 참조 (인터넷 연결 필요)
 
-**v1.0 다운로드 (이전 버전):**
+**v1.0 다운로드 (이전 버전)**
 ```
 https://github.com/miniforce1119/Documents/raw/main/agent-builder-automation/releases/docs-automation-v1.0.tar.gz
 ```
 
 **다운로드 후 압축 해제:**
 ```bash
-tar -xzf docs-automation-v1.1.tar.gz
+tar -xzf docs-automation-v1.2-complete.tar.gz
 cd agent-builder-automation/
 ```
 
@@ -30,14 +37,21 @@ cd agent-builder-automation/
 
 ## 📋 버전 변경 사항
 
-### v1.1 (2026-03-11) - 최신 ⭐
-- ✅ 이미지 URL 수정 (외부 링크로 변경)
-- ✅ 이미지 다운로드 문제 해결
-- ✅ AI 입문 문서 이미지 3개 정상 표시
+### v1.2 Complete (2026-03-11) - 최신 ⭐
+- ✅ **SVG 이미지 3개 포함** (로컬 파일)
+- ✅ 오프라인 환경에서도 이미지 정상 표시
+- ✅ AI-ML-DL 관계도 (SVG)
+- ✅ 학습 방식 비교 (SVG)
+- ✅ AI 발전 타임라인 (SVG)
+- ✅ 회사 내부망에서도 사용 가능
+
+### v1.1 (2026-03-11)
+- 이미지 URL 수정 (외부 링크로 변경)
+- 인터넷 연결 시 이미지 로드
 
 ### v1.0 (2026-03-11)
 - 초기 릴리스
-- AI 입문 문서 포함
+- 이미지 다운로드 문제 있음
 
 ---
 
