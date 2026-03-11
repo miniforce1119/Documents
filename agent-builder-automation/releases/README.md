@@ -1,6 +1,6 @@
 # 📦 다운로드 가이드
 
-> **최신 버전:** v1.0  
+> **최신 버전:** v1.1 ⭐ (이미지 URL 수정)  
 > **업데이트:** 2026-03-11  
 > **포함 내용:** AI 입문 문서 + 전체 문서화 시스템
 
@@ -8,18 +8,36 @@
 
 ## 🔗 다운로드 링크
 
-### ✅ 압축 파일 다운로드
+### ✅ 압축 파일 다운로드 (최신 버전)
 
-**직접 다운로드:**
+**v1.1 다운로드 (추천):**
+```
+https://github.com/miniforce1119/Documents/raw/main/agent-builder-automation/releases/docs-automation-v1.1.tar.gz
+```
+
+**v1.0 다운로드 (이전 버전):**
 ```
 https://github.com/miniforce1119/Documents/raw/main/agent-builder-automation/releases/docs-automation-v1.0.tar.gz
 ```
 
 **다운로드 후 압축 해제:**
 ```bash
-tar -xzf docs-automation-v1.0.tar.gz
+tar -xzf docs-automation-v1.1.tar.gz
 cd agent-builder-automation/
 ```
+
+---
+
+## 📋 버전 변경 사항
+
+### v1.1 (2026-03-11) - 최신 ⭐
+- ✅ 이미지 URL 수정 (외부 링크로 변경)
+- ✅ 이미지 다운로드 문제 해결
+- ✅ AI 입문 문서 이미지 3개 정상 표시
+
+### v1.0 (2026-03-11)
+- 초기 릴리스
+- AI 입문 문서 포함
 
 ---
 
