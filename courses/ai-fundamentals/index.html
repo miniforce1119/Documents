@@ -1,0 +1,4604 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AI 생성 문서 자동화 시스템">
+      
+      
+        <meta name="author" content="miniforce1119">
+      
+      
+        <link rel="canonical" href="https://miniforce1119.github.io/Documents/courses/ai-fundamentals/">
+      
+      
+        <link rel="prev" href="../../concepts/python-best-practices-2026/">
+      
+      
+        <link rel="next" href="../../guides/agent-builder/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>AI 개요 및 주요 용어 설명 - Agent Builder Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="Agent Builder Documentation" class="md-header__button md-logo" aria-label="Agent Builder Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Agent Builder Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AI 개요 및 주요 용어 설명
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/miniforce1119/Documents" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    miniforce1119/Documents
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Agent Builder Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../analysis/2026-q1-data-analysis-report/" class="md-tabs__link">
+          
+  
+  
+  Analysis
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/python-best-practices-2026/" class="md-tabs__link">
+          
+  
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Courses
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/agent-builder/" class="md-tabs__link">
+          
+  
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Agent Builder Documentation" class="md-nav__button md-logo" aria-label="Agent Builder Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Agent Builder Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/miniforce1119/Documents" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    miniforce1119/Documents
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Builder Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/2026-q1-data-analysis-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026년 Q1 데이터 분석 리포트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/kubernetes-core-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes 핵심 개념 정리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/mkdocs-documentation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs Documentation Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/restful-api-design-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RESTful API 설계 완벽 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/%EC%8B%A4%EC%A0%84-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%AC%B8%EC%84%9C-agent-builder-%EC%9E%90%EB%8F%99%ED%99%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    실전 테스트 문서 - Agent Builder 자동화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/%EC%A2%8B%EC%8A%B5%EB%8B%88%EB%8B%A4-%EC%95%84%EB%9E%98%EB%8A%94-%EC%A0%A0%EC%8A%A4%ED%8C%8C%ED%81%AC%EC%97%90%EA%B2%8C-%EA%B7%B8%EB%8C%80%EB%A1%9C-%EB%84%98%EA%B2%A8%EC%84%9C-%EB%8B%A4%EC%9D%8C-%EC%9E%91%EC%97%85%EC%9D%84-%EC%A7%84%ED%96%89%EC%8B%9C%ED%82%A4%EA%B8%B0-%EC%9C%84%ED%95%9C-%EC%8B%A4%ED%96%89-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%AC%B8%EC%84%9C%EC%9E%85%EB%8B%88%EB%8B%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    좋습니다. 아래는 젠스파크에게 그대로 넘겨서 다음 작업을 진행시키기 위한 실행 가이드 문서입니다.
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/python-best-practices-2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 개발 Best Practices 2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Courses
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Courses
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 개요 및 주요 용어 설명
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 개요 및 주요 용어 설명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 목차
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. AI란 무엇인가?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. AI란 무엇인가?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 AI의 정의
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 AI의 정의">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        쉽게 비유하면:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-ai-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 AI vs 일반 프로그램
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 AI vs 일반 프로그램">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        일반 프로그램
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 프로그램
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 왜 지금 AI가 중요한가?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. AI의 종류와 발전 단계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. AI의 종류와 발전 단계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-ai-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 AI의 3단계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 AI의 3단계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-ai-narrow-ai-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1: 약한 AI (Narrow AI) ⭐ 현재 우리가 쓰는 AI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-ai-general-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2: 강한 AI (General AI) 🚧 개발 중
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3-ai-super-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 3: 초지능 AI (Super AI) 🔮 먼 미래
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 AI 기술의 발전 타임라인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 머신러닝 기초
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 머신러닝 기초">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 머신러닝이란?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 머신러닝이란?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 아이디어:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 학습 방식 3가지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 학습 방식 3가지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-supervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) 지도 학습 (Supervised Learning) 👨‍🏫
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-unsupervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) 비지도 학습 (Unsupervised Learning) 🔍
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) 강화 학습 (Reinforcement Learning) 🎮
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 머신러닝의 핵심 요소
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 머신러닝의 핵심 요소">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        데이터 (Data) 📊
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        특성 (Feature) 🎯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모델 (Model) 🧠
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습 (Training) 🏋️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 딥러닝 이해하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 딥러닝 이해하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 딥러닝이란?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 딥러닝이란?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        뇌 vs 딥러닝
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 신경망의 구조
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 신경망의 구조">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기본 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Deep"의 의미
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 딥러닝의 주요 종류
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 딥러닝의 주요 종류">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) CNN (합성곱 신경망) 🖼️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) RNN (순환 신경망) 📝
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Transformer 🚀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 딥러닝 vs 머신러닝
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 주요 AI 용어 사전
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 주요 AI 용어 사전">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 기본 용어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 기본 용어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        알고리즘 (Algorithm) 📐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모델 (Model) 🧩
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습 (Training) 📚
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추론 (Inference) 🔮
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파라미터 (Parameter) ⚙️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 성능 관련 용어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 성능 관련 용어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        정확도 (Accuracy) 🎯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과적합 (Overfitting) 📉
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        일반화 (Generalization) 🌍
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 데이터 관련 용어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 데이터 관련 용어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        데이터셋 (Dataset) 📦
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        훈련 세트 (Training Set) 🏋️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검증 세트 (Validation Set) ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        테스트 세트 (Test Set) 🧪
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        레이블 (Label) 🏷️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 최신 AI 용어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 최신 AI 용어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm-large-language-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM (Large Language Model) 💬
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        프롬프트 (Prompt) 📝
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        토큰 (Token) 🎫
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파인튜닝 (Fine-tuning) 🔧
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rag-retrieval-augmented-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAG (Retrieval-Augmented Generation) 🔍
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hallucination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        할루시네이션 (Hallucination) 🌫️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multimodal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        멀티모달 (Multimodal) 🎨
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 실생활 속 AI 사례
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 실생활 속 AI 사례">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 일상에서 만나는 AI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 일상에서 만나는 AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        스마트폰 📱
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        쇼핑 🛒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        엔터테인먼트 🎬
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        교통 🚗
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 산업별 AI 활용
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 산업별 AI 활용">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        의료 🏥
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        금융 💰
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        제조 🏭
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        고객 서비스 💬
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. AI 활용 시 알아야 할 것들
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. AI 활용 시 알아야 할 것들">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 AI의 한계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 AI의 한계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) 데이터 편향 ⚠️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) 설명 불가능 🤷
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) 적대적 공격 🎭
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) 에너지 소비 ⚡
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 윤리적 이슈
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 윤리적 이슈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개인정보 보호 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        저작권 ©️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        일자리 대체 💼
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 AI와 함께 일하는 법
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 AI와 함께 일하는 법">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ai_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI는 도구 🛠️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        프롬프트 엔지니어링 🎯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        비판적 사고 🧐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 다음 단계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 다음 단계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 학습 로드맵
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 학습 로드맵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1: 기초 (지금 여기!) ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2: 실습 ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3: 기술 ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4: 전문 ⭐⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 추천 실습
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 추천 실습">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        오늘 바로 해볼 것 🚀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 유용한 리소스
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3 유용한 리소스">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        무료 강의 📺
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 뉴스/블로그 📰
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 플랫폼 💻
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 요약 정리
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 요약 정리">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 포인트 10가지
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 체크리스트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 체크리스트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 이해
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        용어
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실무
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다음 단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💬 자주 묻는 질문
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💬 자주 묻는 질문">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q1-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q1. AI를 배우려면 수학을 잘해야 하나요?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q2-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q2. 프로그래밍을 모르는데 AI를 배울 수 있나요?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q3-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3. AI가 내 직업을 대체할까요?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q4-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q4. 무료로 AI를 배울 수 있나요?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5. AI 답변을 어디까지 믿어야 하나요?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 마무리
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    실전 테스트 문서 - Agent Builder 자동화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/docker-deployment-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker 배포 완벽 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 목차
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. AI란 무엇인가?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. AI란 무엇인가?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 AI의 정의
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 AI의 정의">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        쉽게 비유하면:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-ai-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 AI vs 일반 프로그램
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 AI vs 일반 프로그램">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        일반 프로그램
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 프로그램
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 왜 지금 AI가 중요한가?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. AI의 종류와 발전 단계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. AI의 종류와 발전 단계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-ai-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 AI의 3단계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 AI의 3단계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-ai-narrow-ai-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1: 약한 AI (Narrow AI) ⭐ 현재 우리가 쓰는 AI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-ai-general-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2: 강한 AI (General AI) 🚧 개발 중
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3-ai-super-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 3: 초지능 AI (Super AI) 🔮 먼 미래
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 AI 기술의 발전 타임라인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 머신러닝 기초
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 머신러닝 기초">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 머신러닝이란?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 머신러닝이란?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 아이디어:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 학습 방식 3가지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 학습 방식 3가지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-supervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) 지도 학습 (Supervised Learning) 👨‍🏫
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-unsupervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) 비지도 학습 (Unsupervised Learning) 🔍
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) 강화 학습 (Reinforcement Learning) 🎮
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 머신러닝의 핵심 요소
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 머신러닝의 핵심 요소">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        데이터 (Data) 📊
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        특성 (Feature) 🎯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모델 (Model) 🧠
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습 (Training) 🏋️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 딥러닝 이해하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 딥러닝 이해하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 딥러닝이란?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 딥러닝이란?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        뇌 vs 딥러닝
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 신경망의 구조
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 신경망의 구조">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기본 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Deep"의 의미
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 딥러닝의 주요 종류
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 딥러닝의 주요 종류">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) CNN (합성곱 신경망) 🖼️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) RNN (순환 신경망) 📝
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Transformer 🚀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 딥러닝 vs 머신러닝
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 주요 AI 용어 사전
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 주요 AI 용어 사전">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 기본 용어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 기본 용어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        알고리즘 (Algorithm) 📐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모델 (Model) 🧩
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습 (Training) 📚
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추론 (Inference) 🔮
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파라미터 (Parameter) ⚙️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 성능 관련 용어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 성능 관련 용어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        정확도 (Accuracy) 🎯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과적합 (Overfitting) 📉
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        일반화 (Generalization) 🌍
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 데이터 관련 용어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 데이터 관련 용어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        데이터셋 (Dataset) 📦
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        훈련 세트 (Training Set) 🏋️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검증 세트 (Validation Set) ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        테스트 세트 (Test Set) 🧪
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        레이블 (Label) 🏷️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 최신 AI 용어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 최신 AI 용어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm-large-language-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM (Large Language Model) 💬
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        프롬프트 (Prompt) 📝
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        토큰 (Token) 🎫
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파인튜닝 (Fine-tuning) 🔧
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rag-retrieval-augmented-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAG (Retrieval-Augmented Generation) 🔍
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hallucination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        할루시네이션 (Hallucination) 🌫️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multimodal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        멀티모달 (Multimodal) 🎨
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 실생활 속 AI 사례
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 실생활 속 AI 사례">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 일상에서 만나는 AI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 일상에서 만나는 AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        스마트폰 📱
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        쇼핑 🛒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        엔터테인먼트 🎬
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        교통 🚗
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 산업별 AI 활용
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 산업별 AI 활용">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        의료 🏥
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        금융 💰
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        제조 🏭
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        고객 서비스 💬
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. AI 활용 시 알아야 할 것들
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. AI 활용 시 알아야 할 것들">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 AI의 한계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 AI의 한계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) 데이터 편향 ⚠️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) 설명 불가능 🤷
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) 적대적 공격 🎭
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) 에너지 소비 ⚡
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 윤리적 이슈
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 윤리적 이슈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개인정보 보호 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        저작권 ©️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        일자리 대체 💼
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 AI와 함께 일하는 법
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 AI와 함께 일하는 법">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ai_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI는 도구 🛠️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        프롬프트 엔지니어링 🎯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        비판적 사고 🧐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 다음 단계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 다음 단계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 학습 로드맵
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 학습 로드맵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1: 기초 (지금 여기!) ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2: 실습 ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3: 기술 ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4: 전문 ⭐⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 추천 실습
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 추천 실습">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        오늘 바로 해볼 것 🚀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 유용한 리소스
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3 유용한 리소스">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        무료 강의 📺
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 뉴스/블로그 📰
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 플랫폼 💻
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 요약 정리
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 요약 정리">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 포인트 10가지
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 체크리스트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 체크리스트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 이해
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        용어
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실무
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다음 단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💬 자주 묻는 질문
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💬 자주 묻는 질문">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q1-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q1. AI를 배우려면 수학을 잘해야 하나요?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q2-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q2. 프로그래밍을 모르는데 AI를 배울 수 있나요?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q3-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3. AI가 내 직업을 대체할까요?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q4-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q4. 무료로 AI를 배울 수 있나요?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5. AI 답변을 어디까지 믿어야 하나요?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 마무리
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ai">AI 개요 및 주요 용어 설명</h1>
+<blockquote>
+<p><strong>학습 목표:</strong> AI의 기본 개념을 이해하고, 실무에서 자주 사용되는 핵심 용어를 익힙니다.<br />
+<strong>소요 시간:</strong> 약 2시간<br />
+<strong>난이도:</strong> ⭐ 입문</p>
+</blockquote>
+<hr />
+<h2 id="_1">📚 목차</h2>
+<ol>
+<li><a href="#1-ai란-무엇인가">AI란 무엇인가?</a></li>
+<li><a href="#2-ai의-종류와-발전-단계">AI의 종류와 발전 단계</a></li>
+<li><a href="#3-머신러닝-기초">머신러닝 기초</a></li>
+<li><a href="#4-딥러닝-이해하기">딥러닝 이해하기</a></li>
+<li><a href="#5-주요-ai-용어-사전">주요 AI 용어 사전</a></li>
+<li><a href="#6-실생활-속-ai-사례">실생활 속 AI 사례</a></li>
+<li><a href="#7-ai-활용-시-알아야-할-것들">AI 활용 시 알아야 할 것들</a></li>
+<li><a href="#8-다음-단계">다음 단계</a></li>
+</ol>
+<hr />
+<h2 id="1-ai">1. AI란 무엇인가?</h2>
+<h3 id="11-ai">1.1 AI의 정의</h3>
+<p><strong>AI (Artificial Intelligence, 인공지능)</strong>는 사람처럼 생각하고 학습하는 컴퓨터 프로그램입니다.</p>
+<h4 id="_2">쉽게 비유하면:</h4>
+<table>
+<thead>
+<tr>
+<th>상황</th>
+<th>사람</th>
+<th>AI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사진 보기</td>
+<td>"이건 고양이야"</td>
+<td>"이미지를 분석한 결과, 고양이일 확률 95%"</td>
+</tr>
+<tr>
+<td>글 쓰기</td>
+<td>경험과 지식으로 문장 작성</td>
+<td>학습한 패턴으로 문장 생성</td>
+</tr>
+<tr>
+<td>번역</td>
+<td>두 언어를 알고 있어서 번역</td>
+<td>수많은 번역 예시를 학습해서 번역</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-ai-vs">1.2 AI vs 일반 프로그램</h3>
+<h4 id="_3"><strong>일반 프로그램</strong></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>규칙: &quot;온도가 30도 이상이면 &#39;더워요&#39; 출력&quot;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>입력: 32도
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>출력: 더워요
+</code></pre></div>
+→ 프로그래머가 <strong>모든 규칙을 직접 작성</strong></p>
+<h4 id="ai_1"><strong>AI 프로그램</strong></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>학습: 수천 개의 [온도, 날씨 설명] 데이터로 학습
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>입력: 32도
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>출력: 매우 더운 날씨입니다. 시원한 곳에서 휴식을 취하세요.
+</code></pre></div>
+→ AI가 <strong>데이터에서 패턴을 스스로 학습</strong></p>
+<h3 id="13-ai">1.3 왜 지금 AI가 중요한가?</h3>
+<p><strong>3가지 이유:</strong></p>
+<ol>
+<li><strong>데이터 폭발</strong> 📊</li>
+<li>매일 생성되는 데이터: 약 2.5조 바이트</li>
+<li>
+<p>사람이 직접 분석하기 불가능</p>
+</li>
+<li>
+<p><strong>컴퓨팅 파워 증가</strong> 💻</p>
+</li>
+<li>GPU, TPU 등 고성능 칩 발전</li>
+<li>
+<p>클라우드 컴퓨팅으로 누구나 사용 가능</p>
+</li>
+<li>
+<p><strong>알고리즘 발전</strong> 🧠</p>
+</li>
+<li>Transformer (2017)</li>
+<li>GPT, BERT 등 혁신적 모델 등장</li>
+</ol>
+<hr />
+<h2 id="2-ai">2. AI의 종류와 발전 단계</h2>
+<p><img alt="AI, 머신러닝, 딥러닝 관계도" src="../../images/ai-fundamentals/ai-ml-dl-relationship.svg" />
+<em>그림 1: AI, 머신러닝, 딥러닝의 관계</em></p>
+<h3 id="21-ai-3">2.1 AI의 3단계</h3>
+<h4 id="stage-1-ai-narrow-ai-ai"><strong>Stage 1: 약한 AI (Narrow AI)</strong> ⭐ <em>현재 우리가 쓰는 AI</em></h4>
+<ul>
+<li><strong>특징:</strong> 특정 작업만 잘함</li>
+<li><strong>예시:</strong></li>
+<li>Siri, Alexa (음성 비서)</li>
+<li>Netflix 추천 시스템</li>
+<li>자율주행차</li>
+<li>ChatGPT (대화 생성)</li>
+</ul>
+<h4 id="stage-2-ai-general-ai"><strong>Stage 2: 강한 AI (General AI)</strong> 🚧 <em>개발 중</em></h4>
+<ul>
+<li><strong>특징:</strong> 사람처럼 여러 작업을 종합적으로 수행</li>
+<li><strong>현황:</strong> 아직 완성되지 않음</li>
+</ul>
+<h4 id="stage-3-ai-super-ai"><strong>Stage 3: 초지능 AI (Super AI)</strong> 🔮 <em>먼 미래</em></h4>
+<ul>
+<li><strong>특징:</strong> 인간보다 뛰어난 지능</li>
+<li><strong>현황:</strong> 이론적 개념</li>
+</ul>
+<h3 id="22-ai">2.2 AI 기술의 발전 타임라인</h3>
+<p><img alt="AI 발전 타임라인" src="../../images/ai-fundamentals/ai-timeline.svg" />
+<em>그림 2: AI 기술의 주요 이정표</em></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>1950s   튜링 테스트 제안
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>1960s   ELIZA (최초 챗봇)
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>1997    IBM Deep Blue, 체스 세계 챔피언 이김
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>2011    IBM Watson, 퀴즈쇼 우승
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>2012    딥러닝 혁명 시작 (AlexNet)
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>2016    AlphaGo, 이세돌 9단 이김
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>2018    BERT (자연어 이해 혁신)
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>2020    GPT-3 출시
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>2022    ChatGPT 공개 (전 세계 열풍)
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>2023    GPT-4, Gemini 등 거대 언어 모델 경쟁
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>2024    멀티모달 AI (텍스트+이미지+비디오+음성)
+</code></pre></div>
+<hr />
+<h2 id="3">3. 머신러닝 기초</h2>
+<h3 id="31">3.1 머신러닝이란?</h3>
+<p><strong>머신러닝(Machine Learning, ML)</strong>은 컴퓨터가 데이터에서 스스로 학습하는 기술입니다.</p>
+<h4 id="_4">핵심 아이디어:</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>데이터 → 학습 → 패턴 발견 → 예측/판단
+</code></pre></div>
+<h3 id="32-3">3.2 학습 방식 3가지</h3>
+<p><img alt="머신러닝 학습 방식" src="../../images/ai-fundamentals/learning-types.svg" />
+<em>그림 3: 지도 학습, 비지도 학습, 강화 학습 비교</em></p>
+<h4 id="1-supervised-learning"><strong>1) 지도 학습 (Supervised Learning)</strong> 👨‍🏫</h4>
+<p><strong>개념:</strong> 정답이 있는 데이터로 학습</p>
+<p><strong>예시:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>학습 데이터:
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>이미지1 + 정답: 개
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>이미지2 + 정답: 고양이
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>이미지3 + 정답: 개
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>...
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>새로운 이미지 입력 → AI 예측: 개
+</code></pre></div></p>
+<p><strong>활용:</strong>
+- 스팸 메일 분류
+- 질병 진단
+- 주가 예측</p>
+<h4 id="2-unsupervised-learning"><strong>2) 비지도 학습 (Unsupervised Learning)</strong> 🔍</h4>
+<p><strong>개념:</strong> 정답 없이 데이터의 패턴을 스스로 찾음</p>
+<p><strong>예시:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>고객 구매 데이터 → AI가 자동으로 그룹화
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>그룹 A: 주로 전자제품 구매
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>그룹 B: 주로 화장품 구매
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>그룹 C: 주로 식품 구매
+</code></pre></div></p>
+<p><strong>활용:</strong>
+- 고객 세분화
+- 이상 거래 탐지
+- 추천 시스템</p>
+<h4 id="3-reinforcement-learning"><strong>3) 강화 학습 (Reinforcement Learning)</strong> 🎮</h4>
+<p><strong>개념:</strong> 시행착오를 통해 보상을 최대화하는 방법을 학습</p>
+<p><strong>예시:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>게임 AI:
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>행동1: 앞으로 이동 → 보상: +1점
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>행동2: 적과 충돌 → 보상: -10점
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>행동3: 아이템 획득 → 보상: +5점
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>반복 학습 → 최적의 전략 발견
+</code></pre></div></p>
+<p><strong>활용:</strong>
+- 게임 AI (AlphaGo)
+- 로봇 제어
+- 자율주행</p>
+<h3 id="33">3.3 머신러닝의 핵심 요소</h3>
+<h4 id="data"><strong>데이터 (Data)</strong> 📊</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>많을수록 좋음 ✅
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>품질이 중요함 ✅
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>다양할수록 좋음 ✅
+</code></pre></div>
+<h4 id="feature"><strong>특성 (Feature)</strong> 🎯</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>예: 집값 예측
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>특성들:
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>- 면적
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>- 방 개수
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>- 위치
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>- 건축 연도
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>- 주변 학교
+</code></pre></div>
+<h4 id="model"><strong>모델 (Model)</strong> 🧠</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>데이터를 학습해서 만들어진 &quot;예측기&quot;
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>예: 선형 회귀, 의사결정 트리, 신경망
+</code></pre></div>
+<h4 id="training"><strong>학습 (Training)</strong> 🏋️</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>데이터 → 모델 입력 → 예측 → 오차 계산 → 모델 수정
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>반복 반복 반복... → 정확도 향상
+</code></pre></div>
+<hr />
+<h2 id="4">4. 딥러닝 이해하기</h2>
+<h3 id="41">4.1 딥러닝이란?</h3>
+<p><strong>딥러닝(Deep Learning)</strong>은 머신러닝의 한 종류로, <strong>인간의 뇌를 모방한 신경망</strong>을 사용합니다.</p>
+<h4 id="vs">뇌 vs 딥러닝</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>사람 뇌:
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>뉴런(신경세포) → 시냅스(연결) → 신호 전달
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>딥러닝:
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>인공 뉴런 → 가중치(연결 강도) → 정보 전달
+</code></pre></div>
+<h3 id="42">4.2 신경망의 구조</h3>
+<h4 id="_5"><strong>기본 구조</strong></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>입력층 → [은닉층 1] → [은닉층 2] → ... → 출력층
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>예: 손글씨 숫자 인식
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>입력: 28x28 픽셀 이미지 (784개 숫자)
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>은닉층: 여러 층 (패턴 추출)
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>출력: 0~9 중 하나
+</code></pre></div>
+<h4 id="deep"><strong>"Deep"의 의미</strong></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>얕은 신경망: 은닉층 1~2개
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>깊은 신경망: 은닉층 수십~수백 개 ← 딥러닝!
+</code></pre></div>
+<h3 id="43">4.3 딥러닝의 주요 종류</h3>
+<h4 id="1-cnn"><strong>1) CNN (합성곱 신경망)</strong> 🖼️</h4>
+<p><strong>특징:</strong> 이미지 인식에 특화</p>
+<p><strong>원리:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>이미지 → 특징 추출 (모서리, 패턴) → 분류
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>활용:
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>- 얼굴 인식
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>- 의료 영상 분석
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>- 자율주행 (물체 인식)
+</code></pre></div></p>
+<h4 id="2-rnn"><strong>2) RNN (순환 신경망)</strong> 📝</h4>
+<p><strong>특징:</strong> 순서가 있는 데이터 처리</p>
+<p><strong>원리:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>단어1 → 단어2 → 단어3 → 예측
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>활용:
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>- 번역
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>- 음성 인식
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>- 주가 예측
+</code></pre></div></p>
+<h4 id="3-transformer"><strong>3) Transformer</strong> 🚀</h4>
+<p><strong>특징:</strong> 현재 가장 강력한 구조 (ChatGPT, GPT-4 기반)</p>
+<p><strong>원리:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>문장 전체를 동시에 분석
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>단어 간 관계를 &quot;Attention&quot;으로 파악
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>활용:
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>- 대화 AI (ChatGPT)
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>- 번역 (Google 번역)
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>- 요약, 글쓰기
+</code></pre></div></p>
+<h3 id="44-vs">4.4 딥러닝 vs 머신러닝</h3>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>머신러닝</th>
+<th>딥러닝</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>데이터</strong></td>
+<td>적은 데이터로도 가능</td>
+<td>대량의 데이터 필요</td>
+</tr>
+<tr>
+<td><strong>특징 추출</strong></td>
+<td>사람이 직접 정의</td>
+<td>AI가 자동으로 학습</td>
+</tr>
+<tr>
+<td><strong>계산</strong></td>
+<td>일반 CPU로 가능</td>
+<td>GPU/TPU 필요</td>
+</tr>
+<tr>
+<td><strong>정확도</strong></td>
+<td>중간</td>
+<td>높음</td>
+</tr>
+<tr>
+<td><strong>예시</strong></td>
+<td>의사결정 트리, SVM</td>
+<td>CNN, Transformer</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-ai">5. 주요 AI 용어 사전</h2>
+<h3 id="51">5.1 기본 용어</h3>
+<h4 id="algorithm"><strong>알고리즘 (Algorithm)</strong> 📐</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>문제를 해결하는 단계적 절차
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>예: 요리 레시피, 수학 공식
+</code></pre></div>
+<h4 id="model_1"><strong>모델 (Model)</strong> 🧩</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>학습된 AI의 &quot;지식&quot;
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>예: GPT-4 모델, BERT 모델
+</code></pre></div>
+<h4 id="training_1"><strong>학습 (Training)</strong> 📚</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>데이터를 보고 패턴을 익히는 과정
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>예: 1만 장 고양이 사진으로 학습
+</code></pre></div>
+<h4 id="inference"><strong>추론 (Inference)</strong> 🔮</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>학습된 모델로 예측하는 것
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>예: 새 사진 보고 &quot;고양이다!&quot; 판단
+</code></pre></div>
+<h4 id="parameter"><strong>파라미터 (Parameter)</strong> ⚙️</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>모델 내부의 &quot;설정값&quot;
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>예: GPT-4는 약 1.7조 개 파라미터
+</code></pre></div>
+<h3 id="52">5.2 성능 관련 용어</h3>
+<h4 id="accuracy"><strong>정확도 (Accuracy)</strong> 🎯</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>전체 중 맞춘 비율
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>예: 100개 중 95개 정답 → 95% 정확도
+</code></pre></div>
+<h4 id="overfitting"><strong>과적합 (Overfitting)</strong> 📉</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>훈련 데이터만 너무 잘 맞춰서 새 데이터는 못 맞추는 현상
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>비유:
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>시험 문제만 달달 외워서
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>실전에서 응용 못 하는 것
+</code></pre></div>
+<h4 id="generalization"><strong>일반화 (Generalization)</strong> 🌍</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>학습한 내용을 새로운 상황에 적용하는 능력
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>좋은 AI = 일반화 능력이 높음
+</code></pre></div>
+<h3 id="53">5.3 데이터 관련 용어</h3>
+<h4 id="dataset"><strong>데이터셋 (Dataset)</strong> 📦</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>학습에 사용하는 데이터 모음
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>예: ImageNet (1400만 장 이미지)
+</code></pre></div>
+<h4 id="training-set"><strong>훈련 세트 (Training Set)</strong> 🏋️</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>모델 학습에 사용하는 데이터
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>예: 전체의 80%
+</code></pre></div>
+<h4 id="validation-set"><strong>검증 세트 (Validation Set)</strong> ✅</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>모델 성능을 중간 점검하는 데이터
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>예: 전체의 10%
+</code></pre></div>
+<h4 id="test-set"><strong>테스트 세트 (Test Set)</strong> 🧪</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>최종 성능을 평가하는 데이터
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>예: 전체의 10%
+</code></pre></div>
+<h4 id="label"><strong>레이블 (Label)</strong> 🏷️</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>데이터의 정답
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>예: 이미지 + 레이블(고양이/개)
+</code></pre></div>
+<h3 id="54-ai">5.4 최신 AI 용어</h3>
+<h4 id="llm-large-language-model"><strong>LLM (Large Language Model)</strong> 💬</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>대규모 언어 모델
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>예: GPT-4, Claude, Gemini
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>특징: 거대한 텍스트 데이터로 학습
+</code></pre></div>
+<h4 id="prompt"><strong>프롬프트 (Prompt)</strong> 📝</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>AI에게 주는 명령/질문
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>예: &quot;Python 코드를 작성해줘&quot;
+</code></pre></div>
+<h4 id="token"><strong>토큰 (Token)</strong> 🎫</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>AI가 처리하는 텍스트 단위
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>예: &quot;안녕하세요&quot; → [안녕, 하, 세요] (3 토큰)
+</code></pre></div>
+<h4 id="fine-tuning"><strong>파인튜닝 (Fine-tuning)</strong> 🔧</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>사전 학습된 모델을 특정 작업에 맞게 재학습
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>예: GPT를 의료 챗봇으로 특화
+</code></pre></div>
+<h4 id="rag-retrieval-augmented-generation"><strong>RAG (Retrieval-Augmented Generation)</strong> 🔍</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>외부 지식을 검색해서 답변에 활용
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>예: 회사 문서를 참고해서 답변
+</code></pre></div>
+<h4 id="hallucination"><strong>할루시네이션 (Hallucination)</strong> 🌫️</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>AI가 거짓 정보를 그럴듯하게 만들어내는 현상
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>예: 없는 논문을 있다고 주장
+</code></pre></div>
+<h4 id="multimodal"><strong>멀티모달 (Multimodal)</strong> 🎨</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>여러 종류의 데이터를 동시에 처리
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>예: 텍스트 + 이미지 + 음성
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>대표: GPT-4V, Gemini
+</code></pre></div>
+<hr />
+<h2 id="6-ai">6. 실생활 속 AI 사례</h2>
+<h3 id="61-ai">6.1 일상에서 만나는 AI</h3>
+<h4 id="_6"><strong>스마트폰</strong> 📱</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>✓ 얼굴 인식 잠금 해제
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>✓ 사진 자동 분류 (사람, 장소별)
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>✓ 음성 비서 (Siri, Bixby)
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>✓ 키보드 자동 완성
+</code></pre></div>
+<h4 id="_7"><strong>쇼핑</strong> 🛒</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>✓ 쿠팡/네이버 상품 추천
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>✓ 검색어 자동 완성
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>✓ 맞춤형 광고
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>✓ 가격 예측 (항공권 등)
+</code></pre></div>
+<h4 id="_8"><strong>엔터테인먼트</strong> 🎬</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>✓ Netflix/YouTube 추천
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>✓ Spotify 플레이리스트
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>✓ 게임 AI (적 캐릭터)
+</code></pre></div>
+<h4 id="_9"><strong>교통</strong> 🚗</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>✓ 네이버/카카오 내비 (교통 예측)
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>✓ 자율주행 (테슬라, 현대)
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>✓ 지하철 도착 시간 예측
+</code></pre></div>
+<h3 id="62-ai">6.2 산업별 AI 활용</h3>
+<h4 id="_10"><strong>의료</strong> 🏥</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>✓ X-ray, CT 이미지 분석
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>✓ 암 진단 보조
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>✓ 신약 개발
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>✓ 유전자 분석
+</code></pre></div>
+<h4 id="_11"><strong>금융</strong> 💰</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>✓ 신용 평가
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>✓ 주식 거래 (알고리즘 트레이딩)
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>✓ 보이스 피싱 탐지
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>✓ 챗봇 상담
+</code></pre></div>
+<h4 id="_12"><strong>제조</strong> 🏭</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>✓ 품질 검사 (불량품 자동 분류)
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>✓ 예측 정비
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>✓ 공정 최적화
+</code></pre></div>
+<h4 id="_13"><strong>고객 서비스</strong> 💬</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>✓ 챗봇 (상담 자동화)
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>✓ 감정 분석
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>✓ 음성 인식 (콜센터)
+</code></pre></div>
+<hr />
+<h2 id="7-ai">7. AI 활용 시 알아야 할 것들</h2>
+<h3 id="71-ai">7.1 AI의 한계</h3>
+<h4 id="1"><strong>1) 데이터 편향</strong> ⚠️</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>문제:
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>남성 사진으로만 학습 → 여성 인식 못 함
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>해결:
+<a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>다양한 데이터 확보
+</code></pre></div>
+<h4 id="2"><strong>2) 설명 불가능</strong> 🤷</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>문제:
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>&quot;왜 이렇게 판단했어?&quot; → AI가 설명 못 함
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>예: 대출 거절 이유를 모름
+</code></pre></div>
+<h4 id="3_1"><strong>3) 적대적 공격</strong> 🎭</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>문제:
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>사람 눈엔 똑같은데, AI는 다르게 인식
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>예: 스티커 하나로 정지 표지판을 속도 제한 표지판으로 인식
+</code></pre></div>
+<h4 id="4_1"><strong>4) 에너지 소비</strong> ⚡</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>문제:
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>GPT-3 학습: 약 1,287MWh (일반 가정 120년 전력)
+<a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>
+<a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>해결:
+<a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a>효율적인 모델 개발 중
+</code></pre></div>
+<h3 id="72">7.2 윤리적 이슈</h3>
+<h4 id="_14"><strong>개인정보 보호</strong> 🔒</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>AI 학습에 내 데이터가 사용되나?
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>내 사진이 AI 학습에 쓰였나?
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>
+<a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>→ 데이터 동의, 익명화 필요
+</code></pre></div>
+<h4 id="_15"><strong>저작권</strong> ©️</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>AI가 만든 그림/글의 저작권은?
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>AI가 기존 작품을 학습했다면?
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>→ 법적 논란 진행 중
+</code></pre></div>
+<h4 id="_16"><strong>일자리 대체</strong> 💼</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>AI가 내 일자리를 빼앗을까?
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>현실:
+<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>✓ 반복 업무 → AI 대체 가능
+<a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a>✓ 창의적/대인 업무 → 여전히 사람 필요
+<a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a>✓ 새로운 직업 탄생 (AI 트레이너 등)
+</code></pre></div>
+<h3 id="73-ai">7.3 AI와 함께 일하는 법</h3>
+<h4 id="ai_2"><strong>AI는 도구</strong> 🛠️</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>❌ AI가 모든 걸 해줄 거야
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>✅ AI를 활용해서 내 업무를 효율화
+<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>
+<a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a>예:
+<a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>- 초안 작성: AI
+<a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a>- 검토/수정: 사람
+</code></pre></div>
+<h4 id="_17"><strong>프롬프트 엔지니어링</strong> 🎯</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>좋은 질문 = 좋은 답변
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>나쁜 예:
+<a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>&quot;코드 짜줘&quot;
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>
+<a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>좋은 예:
+<a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a>&quot;Python으로 CSV 파일을 읽어서
+<a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a>각 열의 평균을 계산하는 코드를 작성해줘.
+<a id="__codelineno-53-9" name="__codelineno-53-9" href="#__codelineno-53-9"></a>pandas 라이브러리를 사용하고
+<a id="__codelineno-53-10" name="__codelineno-53-10" href="#__codelineno-53-10"></a>주석도 포함해줘.&quot;
+</code></pre></div>
+<h4 id="_18"><strong>비판적 사고</strong> 🧐</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>AI 답변을 맹신하지 말 것
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>체크리스트:
+<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>□ 출처가 명확한가?
+<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>□ 논리적으로 타당한가?
+<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a>□ 최신 정보인가?
+<a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a>□ 편향되지 않았나?
+</code></pre></div>
+<hr />
+<h2 id="8">8. 다음 단계</h2>
+<h3 id="81">8.1 학습 로드맵</h3>
+<h4 id="level-1"><strong>Level 1: 기초 (지금 여기!)</strong> ⭐</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>✓ AI 기본 개념
+<a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>✓ 주요 용어
+<a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>✓ 활용 사례
+</code></pre></div>
+<h4 id="level-2"><strong>Level 2: 실습</strong> ⭐⭐</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>→ ChatGPT, Claude 등 직접 사용
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>→ 프롬프트 작성 연습
+<a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a>→ AI 도구로 업무 자동화
+</code></pre></div>
+<h4 id="level-3"><strong>Level 3: 기술</strong> ⭐⭐⭐</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>→ Python 기초
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>→ 머신러닝 라이브러리 (scikit-learn)
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>→ 간단한 모델 만들기
+</code></pre></div>
+<h4 id="level-4"><strong>Level 4: 전문</strong> ⭐⭐⭐⭐</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>→ 딥러닝 프레임워크 (TensorFlow, PyTorch)
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>→ 모델 학습/배포
+<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>→ AI 프로젝트 수행
+</code></pre></div>
+<h3 id="82">8.2 추천 실습</h3>
+<h4 id="_19"><strong>오늘 바로 해볼 것</strong> 🚀</h4>
+<p><strong>1. ChatGPT 사용해보기</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>질문 예시:
+<a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>&quot;회의록을 요약해줘&quot;
+<a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a>&quot;이메일 답장을 작성해줘&quot;
+<a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a>&quot;Python 함수를 설명해줘&quot;
+</code></pre></div></p>
+<p><strong>2. AI 이미지 생성</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>도구: DALL-E, Midjourney, Stable Diffusion
+<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>프롬프트 예시:
+<a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>&quot;A futuristic city with flying cars, sunset, digital art&quot;
+</code></pre></div></p>
+<p><strong>3. AI 음성 변환</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>도구: ElevenLabs, VREW
+<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>예: 회의 녹음 → 자막 자동 생성
+</code></pre></div></p>
+<h3 id="83">8.3 유용한 리소스</h3>
+<h4 id="_20"><strong>무료 강의</strong> 📺</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>✓ Andrew Ng의 Machine Learning (Coursera)
+<a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>✓ Fast.ai (무료 딥러닝 강의)
+<a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a>✓ Google AI Crash Course
+</code></pre></div>
+<h4 id="ai_3"><strong>AI 뉴스/블로그</strong> 📰</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>✓ OpenAI Blog
+<a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>✓ Google AI Blog
+<a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>✓ Papers with Code (최신 논문)
+</code></pre></div>
+<h4 id="_21"><strong>실습 플랫폼</strong> 💻</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>✓ Kaggle (데이터 분석 경진대회)
+<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>✓ Google Colab (무료 GPU)
+<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>✓ Hugging Face (모델 공유)
+</code></pre></div>
+<hr />
+<h2 id="_22">📝 요약 정리</h2>
+<h3 id="10">핵심 포인트 10가지</h3>
+<ol>
+<li><strong>AI는 데이터에서 학습</strong>하는 프로그램입니다.</li>
+<li><strong>머신러닝</strong>은 AI의 한 방법이고, <strong>딥러닝</strong>은 머신러닝의 한 종류입니다.</li>
+<li><strong>지도 학습</strong> (정답 있음), <strong>비지도 학습</strong> (정답 없음), <strong>강화 학습</strong> (보상으로 학습)이 있습니다.</li>
+<li><strong>LLM</strong> (대규모 언어 모델)이 현재 가장 주목받는 AI입니다.</li>
+<li>AI는 <strong>이미지, 텍스트, 음성, 비디오</strong> 등 다양한 데이터를 처리합니다.</li>
+<li><strong>프롬프트</strong>를 잘 작성하면 AI를 효과적으로 활용할 수 있습니다.</li>
+<li>AI에는 <strong>편향, 할루시네이션</strong> 등의 한계가 있습니다.</li>
+<li>AI는 <strong>도구</strong>이며, 사람의 판단이 여전히 중요합니다.</li>
+<li><strong>윤리적 사용</strong>이 필수입니다 (개인정보, 저작권 등).</li>
+<li>지금 바로 <strong>ChatGPT 등으로 실습</strong>을 시작하세요!</li>
+</ol>
+<hr />
+<h2 id="_23">✅ 체크리스트</h2>
+<p>학습 후 스스로 점검해보세요:</p>
+<h3 id="_24">개념 이해</h3>
+<ul>
+<li>[ ] AI, 머신러닝, 딥러닝의 차이를 설명할 수 있다</li>
+<li>[ ] 지도/비지도/강화 학습을 구분할 수 있다</li>
+<li>[ ] LLM이 무엇인지 설명할 수 있다</li>
+<li>[ ] 과적합과 일반화를 이해했다</li>
+</ul>
+<h3 id="_25">용어</h3>
+<ul>
+<li>[ ] 프롬프트, 토큰, 파라미터를 설명할 수 있다</li>
+<li>[ ] 할루시네이션이 무엇인지 안다</li>
+<li>[ ] RAG가 무엇인지 이해했다</li>
+</ul>
+<h3 id="_26">실무</h3>
+<ul>
+<li>[ ] AI 활용 사례를 3가지 이상 말할 수 있다</li>
+<li>[ ] AI의 한계를 설명할 수 있다</li>
+<li>[ ] 프롬프트를 효과적으로 작성할 수 있다</li>
+</ul>
+<h3 id="_27">다음 단계</h3>
+<ul>
+<li>[ ] ChatGPT를 사용해봤다</li>
+<li>[ ] AI 이미지 생성 도구를 써봤다</li>
+<li>[ ] 추가 학습 계획을 세웠다</li>
+</ul>
+<hr />
+<h2 id="_28">💬 자주 묻는 질문</h2>
+<h3 id="q1-ai">Q1. AI를 배우려면 수학을 잘해야 하나요?</h3>
+<p><strong>A:</strong> AI를 <strong>사용</strong>하는 데는 수학이 필요 없습니다. AI를 <strong>개발</strong>하려면 선형대수, 미적분, 확률이 필요하지만, 도구로 활용하는 것은 누구나 가능합니다.</p>
+<h3 id="q2-ai">Q2. 프로그래밍을 모르는데 AI를 배울 수 있나요?</h3>
+<p><strong>A:</strong> 네! ChatGPT, Midjourney 같은 AI 도구는 코딩 없이 사용 가능합니다. 다만, 더 깊이 있는 활용을 위해서는 Python 기초를 추천합니다.</p>
+<h3 id="q3-ai">Q3. AI가 내 직업을 대체할까요?</h3>
+<p><strong>A:</strong> 반복적인 업무는 자동화될 수 있지만, 창의성, 판단, 대인 관계가 필요한 일은 여전히 사람이 중요합니다. 오히려 AI를 활용하는 능력이 경쟁력이 됩니다.</p>
+<h3 id="q4-ai">Q4. 무료로 AI를 배울 수 있나요?</h3>
+<p><strong>A:</strong> 네! YouTube, Coursera, Fast.ai, Google Colab 등 무료 자료가 많습니다. ChatGPT 무료 버전으로도 충분히 연습할 수 있습니다.</p>
+<h3 id="q5-ai">Q5. AI 답변을 어디까지 믿어야 하나요?</h3>
+<p><strong>A:</strong> AI는 도구일 뿐입니다. 중요한 결정은 반드시 사람이 검증해야 합니다. 특히 의료, 법률, 금융 등 전문 분야는 전문가 확인이 필수입니다.</p>
+<hr />
+<h2 id="_29">🎓 마무리</h2>
+<p>축하합니다! AI의 기본 개념과 주요 용어를 모두 학습했습니다. 🎉</p>
+<p><strong>이제 할 일:</strong>
+1. ✅ 이 문서를 다시 한 번 읽어보기
+2. ✅ ChatGPT나 다른 AI 도구 사용해보기
+3. ✅ 관심 있는 분야의 AI 사례 찾아보기
+4. ✅ 다음 단계 학습 계획 세우기</p>
+<p><strong>기억하세요:</strong>
+- AI는 <strong>도구</strong>입니다.
+- <strong>꾸준한 실습</strong>이 가장 중요합니다.
+- <strong>비판적 사고</strong>를 잊지 마세요.</p>
+<hr />
+<p><strong>작성일:</strong> 2026-03-11<br />
+<strong>카테고리:</strong> Courses<br />
+<strong>태그:</strong> AI, 머신러닝, 딥러닝, 입문, 용어<br />
+<strong>소요 시간:</strong> 약 2시간<br />
+<strong>난이도:</strong> ⭐ 입문</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/miniforce1119/Documents" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

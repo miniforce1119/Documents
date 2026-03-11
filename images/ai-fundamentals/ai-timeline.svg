@@ -1,0 +1,48 @@
+<svg width="900" height="250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .line { stroke: #3498db; stroke-width: 3; }
+      .dot { fill: #3498db; }
+      .year { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; text-anchor: middle; }
+      .event { font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- 타임라인 -->
+  <line x1="50" y1="125" x2="850" y2="125" class="line"/>
+  
+  <!-- 1950s -->
+  <circle cx="100" cy="125" r="8" class="dot"/>
+  <text x="100" y="110" class="year" fill="#2c3e50">1950s</text>
+  <text x="100" y="155" class="event" fill="#7f8c8d">튜링 테스트</text>
+  
+  <!-- 1997 -->
+  <circle cx="250" cy="125" r="8" class="dot"/>
+  <text x="250" y="110" class="year" fill="#2c3e50">1997</text>
+  <text x="250" y="155" class="event" fill="#7f8c8d">Deep Blue</text>
+  <text x="250" y="175" class="event" fill="#7f8c8d">(체스 승리)</text>
+  
+  <!-- 2012 -->
+  <circle cx="400" cy="125" r="8" class="dot"/>
+  <text x="400" y="110" class="year" fill="#2c3e50">2012</text>
+  <text x="400" y="155" class="event" fill="#7f8c8d">딥러닝 혁명</text>
+  <text x="400" y="175" class="event" fill="#7f8c8d">(AlexNet)</text>
+  
+  <!-- 2016 -->
+  <circle cx="550" cy="125" r="8" class="dot"/>
+  <text x="550" y="110" class="year" fill="#2c3e50">2016</text>
+  <text x="550" y="155" class="event" fill="#7f8c8d">AlphaGo</text>
+  <text x="550" y="175" class="event" fill="#7f8c8d">(바둑 승리)</text>
+  
+  <!-- 2022 -->
+  <circle cx="700" cy="125" r="8" class="dot"/>
+  <text x="700" y="110" class="year" fill="#2c3e50">2022</text>
+  <text x="700" y="155" class="event" fill="#7f8c8d">ChatGPT</text>
+  <text x="700" y="175" class="event" fill="#7f8c8d">(전세계 열풍)</text>
+  
+  <!-- 2024 -->
+  <circle cx="800" cy="125" r="8" class="dot"/>
+  <text x="800" y="110" class="year" fill="#2c3e50">2024</text>
+  <text x="800" y="155" class="event" fill="#7f8c8d">멀티모달 AI</text>
+  <text x="800" y="175" class="event" fill="#7f8c8d">(GPT-4, Gemini)</text>
+</svg>
