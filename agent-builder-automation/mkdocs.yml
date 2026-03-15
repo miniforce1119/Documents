@@ -54,6 +54,22 @@ markdown_extensions:
   - md_in_html
   - tables
 
+nav:
+  - 홈: index.md
+  - 강의 자료:
+      - AI 기초: courses/ai-fundamentals.md
+  - 가이드:
+      - Agent Builder: guides/agent-builder.md
+      - Docker 배포: guides/docker-deployment-guide.md
+      - OpenClaw 원격 접속: guides/openclaw-remote-access.md
+  - 분석:
+      - MkDocs 문서화 워크플로우: analysis/mkdocs-documentation-workflow.md
+      - 2026 Q1 데이터 분석: analysis/2026-q1-data-analysis-report.md
+      - Kubernetes 핵심 개념: analysis/kubernetes-core-concepts.md
+      - RESTful API 설계: analysis/restful-api-design-guide.md
+  - 개념:
+      - Python Best Practices 2026: concepts/python-best-practices-2026.md
+
 extra:
   social:
     - icon: fontawesome/brands/github
