@@ -43,22 +43,24 @@ Tailscale VPN과 HTTPS 프록시를 활용하여 외부에서도 안전하게 �
 {
   "gateway": {
     "port": 18789,
-    "token": "openclaw-local-20260315",
+    "token": "your-secret-token-here",
     "allowed_origins": [
-      "https://laptop-k8sbd9e2.tail2a2e97.ts.net",
+      "https://your-device-name.tailxxxxx.ts.net",
       "http://localhost:*"
     ]
   }
 }
 ```
 
+> ⚠️ **보안 주의**: `token` 값은 본인만 알고 있는 안전한 문자열로 변경하세요.
+
 #### 설정 항목 설명
 
 | 항목 | 값 | 설명 |
 |-----|---|------|
 | `port` | 18789 | OpenClaw 게이트웨이가 실행되는 포트 |
-| `token` | openclaw-local-20260315 | 인증 토큰 (보안 키) |
-| `allowed_origins` | 배열 | CORS 허용 도메인 목록 |
+| `token` | your-secret-token-here | 인증 토큰 (보안 키) - 반드시 변경 필요 |
+| `allowed_origins` | 배열 | CORS 허용 도메인 목록 (본인의 Tailscale URL) |
 
 ---
 
@@ -112,10 +114,12 @@ tailscale status
 
 **예상 출력:**
 ```
-laptop-k8sbd9e2  online
+your-device-name  online
   100.x.x.x
-  https://laptop-k8sbd9e2.tail2a2e97.ts.net
+  https://your-device-name.tailxxxxx.ts.net
 ```
+
+> 💡 **참고**: `your-device-name`은 Tailscale에서 자동으로 생성되는 고유한 디바이스 이름입니다.
 
 ### 3. Tailscale Serve 설정 확인
 
@@ -125,7 +129,7 @@ tailscale serve status
 
 **예상 출력:**
 ```
-https://laptop-k8sbd9e2.tail2a2e97.ts.net (tailnet only)
+https://your-device-name.tailxxxxx.ts.net (tailnet only)
 |-- / proxy http://127.0.0.1:18789
 ```
 
@@ -135,13 +139,19 @@ https://laptop-k8sbd9e2.tail2a2e97.ts.net (tailnet only)
 
 ### HTTPS 접속
 ```
-https://laptop-k8sbd9e2.tail2a2e97.ts.net
+https://your-device-name.tailxxxxx.ts.net
 ```
 
 ### WebSocket 접속
 ```
-wss://laptop-k8sbd9e2.tail2a2e97.ts.net
+wss://your-device-name.tailxxxxx.ts.net
 ```
+
+> 📝 **내 Tailscale URL 확인 방법:**
+> ```bash
+> tailscale status
+> ```
+> 출력에서 `https://` 로 시작하는 URL을 확인하세요.
 
 ### 로컬 테스트 (집 PC에서)
 ```
@@ -179,8 +189,10 @@ docker exec openclaw-openclaw-gateway-1 openclaw devices approve --all
 
 모바일 브라우저에서:
 ```
-https://laptop-k8sbd9e2.tail2a2e97.ts.net
+https://your-device-name.tailxxxxx.ts.net
 ```
+
+> 💡 본인의 Tailscale URL로 변경하세요.
 
 ---
 
@@ -197,7 +209,7 @@ tailscale serve status
 
 **예상 결과:**
 ```
-https://laptop-k8sbd9e2.tail2a2e97.ts.net (tailnet only)
+https://your-device-name.tailxxxxx.ts.net (tailnet only)
 |-- / proxy http://127.0.0.1:18789
 ```
 
@@ -228,7 +240,7 @@ curl http://localhost:18789
 ### ❌ 문제 2: DNS 이름으로 접속 불가
 
 #### 증상
-- `https://laptop-k8sbd9e2.tail2a2e97.ts.net` 접속 불가
+- `https://your-device-name.tailxxxxx.ts.net` 접속 불가
 - "서버를 찾을 수 없음" 오류
 
 #### 해결 방법
@@ -293,11 +305,13 @@ Android:
 {
   "gateway": {
     "allowed_origins": [
-      "https://laptop-k8sbd9e2.tail2a2e97.ts.net"
+      "https://your-device-name.tailxxxxx.ts.net"
     ]
   }
 }
 ```
+
+> 💡 본인의 Tailscale URL로 정확히 입력해야 합니다.
 
 **2. OpenClaw 재시작**
 ```bash
@@ -329,8 +343,8 @@ tailscale status
 
 **출력 예시:**
 ```
-laptop-k8sbd9e2  online   relay "sfo"
-mobile-device    online   relay "sfo"
+your-device-name  online   relay "sfo"
+mobile-device     online   relay "sfo"
 ```
 
 `relay`가 표시되면 직접 연결이 아닌 우회 중입니다.
@@ -424,7 +438,7 @@ docker ps | grep openclaw
 echo ""
 
 echo "2. Tailscale Status:"
-tailscale status | grep laptop
+tailscale status
 echo ""
 
 echo "3. Tailscale Serve Status:"
@@ -529,7 +543,7 @@ docker exec openclaw-openclaw-gateway-1 openclaw devices approve --latest
 - [ ] Tailscale 로그인 (동일 계정)
 - [ ] VPN 연결 활성화
 - [ ] 집 PC에서 디바이스 승인
-- [ ] `https://laptop-k8sbd9e2.tail2a2e97.ts.net` 접속 테스트
+- [ ] `https://your-device-name.tailxxxxx.ts.net` 접속 테스트 (본인 URL)
 
 ### 문제 발생 시
 - [ ] `docker ps` - 컨테이너 실행 확인
