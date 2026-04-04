@@ -1,0 +1,46 @@
+:root {
+  --slidev-theme-default-background: #ffffff !important;
+  --slidev-theme-default-headingColor: #1a1a2e !important;
+  color-scheme: light !important;
+}
+
+html, body {
+  color-scheme: light !important;
+}
+
+html.dark {
+  --slidev-theme-default-background: #ffffff !important;
+  --slidev-theme-default-headingColor: #1a1a2e !important;
+  color-scheme: light !important;
+}
+
+.dark .slidev-layout {
+  background: #ffffff !important;
+  color: #1a1a2e !important;
+}
+
+.slidev-layout {
+  background: #ffffff !important;
+  color: #1a1a2e !important;
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4,
+.slidev-layout p,
+.slidev-layout li,
+.slidev-layout td,
+.slidev-layout th,
+.slidev-layout span,
+.slidev-layout div {
+  color: #1a1a2e !important;
+}
+
+.slidev-layout a {
+  color: #2563eb !important;
+}
+
+.slidev-layout code {
+  color: #1a1a2e !important;
+}

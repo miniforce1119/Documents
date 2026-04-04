@@ -69,6 +69,7 @@ nav:
       - RESTful API 설계: analysis/restful-api-design-guide.md
   - 개념:
       - Python Best Practices 2026: concepts/python-best-practices-2026.md
+  - 프레젠테이션: presentations.md
 
 extra:
   social:
