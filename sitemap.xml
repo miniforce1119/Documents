@@ -2,50 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://miniforce1119.github.io/Documents/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
+    </url>
+    <url>
+         <loc>https://miniforce1119.github.io/Documents/presentations/</loc>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/analysis/2026-q1-data-analysis-report/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/analysis/kubernetes-core-concepts/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/analysis/mkdocs-documentation-workflow/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/analysis/restful-api-design-guide/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/analysis/%EC%8B%A4%EC%A0%84-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%AC%B8%EC%84%9C-agent-builder-%EC%9E%90%EB%8F%99%ED%99%94/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/analysis/%EC%A2%8B%EC%8A%B5%EB%8B%88%EB%8B%A4-%EC%95%84%EB%9E%98%EB%8A%94-%EC%A0%A0%EC%8A%A4%ED%8C%8C%ED%81%AC%EC%97%90%EA%B2%8C-%EA%B7%B8%EB%8C%80%EB%A1%9C-%EB%84%98%EA%B2%A8%EC%84%9C-%EB%8B%A4%EC%9D%8C-%EC%9E%91%EC%97%85%EC%9D%84-%EC%A7%84%ED%96%89%EC%8B%9C%ED%82%A4%EA%B8%B0-%EC%9C%84%ED%95%9C-%EC%8B%A4%ED%96%89-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%AC%B8%EC%84%9C%EC%9E%85%EB%8B%88%EB%8B%A4/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/concepts/python-best-practices-2026/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/courses/ai-fundamentals/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/guides/agent-builder/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/guides/docker-deployment-guide/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://miniforce1119.github.io/Documents/guides/openclaw-remote-access/</loc>
-         <lastmod>2026-03-15</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
 </urlset>
