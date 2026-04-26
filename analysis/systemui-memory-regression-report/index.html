@@ -12,25 +12,31 @@
         <meta name="author" content="miniforce1119">
       
       
+        <link rel="canonical" href="https://miniforce1119.github.io/Documents/analysis/systemui-memory-regression-report/">
       
+      
+        <link rel="prev" href="../../guides/openclaw-remote-access/">
+      
+      
+        <link rel="next" href="../mkdocs-documentation-workflow/">
       
       
         
       
       
-      <link rel="icon" href="/Documents/assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Agent Builder Documentation</title>
+        <title>SystemUI Memory Regression - Agent Builder Documentation</title>
       
     
     
-      <link rel="stylesheet" href="/Documents/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="/Documents/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,7 +55,7 @@
       
     
     
-    <script>__md_scope=new URL("/Documents/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#systemui-memory-regression" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -83,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href="/Documents/." title="Agent Builder Documentation" class="md-header__button md-logo" aria-label="Agent Builder Documentation" data-md-component="logo">
+    <a href="../.." title="Agent Builder Documentation" class="md-header__button md-logo" aria-label="Agent Builder Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -103,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              SystemUI Memory Regression
             
           </span>
         </div>
@@ -216,7 +227,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/Documents/." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -237,7 +248,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/Documents/courses/ai-fundamentals/" class="md-tabs__link">
+        <a href="../../courses/ai-fundamentals/" class="md-tabs__link">
           
   
   
@@ -257,7 +268,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/Documents/guides/agent-builder/" class="md-tabs__link">
+        <a href="../../guides/agent-builder/" class="md-tabs__link">
           
   
   
@@ -273,11 +284,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/Documents/analysis/systemui-memory-regression-report/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -297,7 +310,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/Documents/concepts/python-best-practices-2026/" class="md-tabs__link">
+        <a href="../../concepts/python-best-practices-2026/" class="md-tabs__link">
           
   
   
@@ -315,7 +328,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/Documents/presentations/" class="md-tabs__link">
+      <a href="../../presentations/" class="md-tabs__link">
         
   
   
@@ -350,7 +363,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/Documents/." title="Agent Builder Documentation" class="md-nav__button md-logo" aria-label="Agent Builder Documentation" data-md-component="logo">
+    <a href="../.." title="Agent Builder Documentation" class="md-nav__button md-logo" aria-label="Agent Builder Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -380,7 +393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -461,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/courses/ai-fundamentals/" class="md-nav__link">
+      <a href="../../courses/ai-fundamentals/" class="md-nav__link">
         
   
   
@@ -550,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/guides/agent-builder/" class="md-nav__link">
+      <a href="../../guides/agent-builder/" class="md-nav__link">
         
   
   
@@ -578,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/guides/docker-deployment-guide/" class="md-nav__link">
+      <a href="../../guides/docker-deployment-guide/" class="md-nav__link">
         
   
   
@@ -606,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/guides/openclaw-remote-access/" class="md-nav__link">
+      <a href="../../guides/openclaw-remote-access/" class="md-nav__link">
         
   
   
@@ -638,28 +651,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -677,7 +693,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -692,10 +708,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/Documents/analysis/systemui-memory-regression-report/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SystemUI Memory Regression
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -711,6 +754,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 전체 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-top-contributors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 메모리 증가 주요 원인 (Top Contributors)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 메모리 섹션별 상세 비교
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Objects 변화
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -723,7 +830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/analysis/mkdocs-documentation-workflow/" class="md-nav__link">
+      <a href="../mkdocs-documentation-workflow/" class="md-nav__link">
         
   
   
@@ -751,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/analysis/2026-q1-data-analysis-report/" class="md-nav__link">
+      <a href="../2026-q1-data-analysis-report/" class="md-nav__link">
         
   
   
@@ -779,7 +886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/analysis/kubernetes-core-concepts/" class="md-nav__link">
+      <a href="../kubernetes-core-concepts/" class="md-nav__link">
         
   
   
@@ -807,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/analysis/restful-api-design-guide/" class="md-nav__link">
+      <a href="../restful-api-design-guide/" class="md-nav__link">
         
   
   
@@ -896,7 +1003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/concepts/python-best-practices-2026/" class="md-nav__link">
+      <a href="../../concepts/python-best-practices-2026/" class="md-nav__link">
         
   
   
@@ -931,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Documents/presentations/" class="md-nav__link">
+      <a href="../../presentations/" class="md-nav__link">
         
   
   
@@ -968,6 +1075,60 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 전체 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-top-contributors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 메모리 증가 주요 원인 (Top Contributors)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 메모리 섹션별 상세 비교
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Objects 변화
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -980,8 +1141,230 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  
+  
+
+
+<h1 id="systemui-memory-regression">SystemUI Memory Regression 분석 보고서</h1>
+<p><strong>생성일시:</strong> 2026-04-26 14:47:24<br />
+<strong>Baseline:</strong> S948NKSU2AZDD (3회 평균)<br />
+<strong>Regression:</strong> S948NKSU2AZDE (3회 평균)<br />
+<strong>심각도:</strong> 🔴 Critical</p>
+<hr />
+<h2 id="1">1. 전체 요약</h2>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>Baseline</th>
+<th>Regression</th>
+<th>변화량</th>
+<th>변화율</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Total PSS</strong></td>
+<td>76,009 KB</td>
+<td>109,700 KB</td>
+<td>+33,691 KB</td>
+<td>+44.3%</td>
+</tr>
+<tr>
+<td><strong>Total RSS</strong></td>
+<td>95,011 KB</td>
+<td>137,125 KB</td>
+<td>+42,114 KB</td>
+<td>+44.3%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-top-contributors">2. 메모리 증가 주요 원인 (Top Contributors)</h2>
+<table>
+<thead>
+<tr>
+<th>순위</th>
+<th>영역</th>
+<th>증가량 (KB)</th>
+<th>증가율</th>
+<th>심각도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Java Heap</td>
+<td>+18,915</td>
+<td>+73.5%</td>
+<td>🔴 Critical</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Dalvik Heap</td>
+<td>+16,447</td>
+<td>+73.5%</td>
+<td>🔴 Critical</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Native Heap</td>
+<td>+10,787</td>
+<td>+70.8%</td>
+<td>🔴 Critical</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Graphics</td>
+<td>+6,274</td>
+<td>+30.7%</td>
+<td>🟡 Warning</td>
+</tr>
+<tr>
+<td>5</td>
+<td>GL mtrack</td>
+<td>+6,164</td>
+<td>+50.4%</td>
+<td>🟡 Warning</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3">3. 메모리 섹션별 상세 비교</h2>
+<table>
+<thead>
+<tr>
+<th>섹션</th>
+<th>Baseline (KB)</th>
+<th>Regression (KB)</th>
+<th>변화량</th>
+<th>심각도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Native Heap</td>
+<td>15,232</td>
+<td>26,019</td>
+<td>+10,787</td>
+<td>🔴 Critical</td>
+</tr>
+<tr>
+<td>Dalvik Heap</td>
+<td>22,372</td>
+<td>38,819</td>
+<td>+16,447</td>
+<td>🔴 Critical</td>
+</tr>
+<tr>
+<td>Dalvik Other</td>
+<td>3,425</td>
+<td>3,328</td>
+<td>-97</td>
+<td>🟢 Info</td>
+</tr>
+<tr>
+<td>Stack</td>
+<td>610</td>
+<td>521</td>
+<td>-89</td>
+<td>🟢 Info</td>
+</tr>
+<tr>
+<td>.so mmap</td>
+<td>8,143</td>
+<td>8,353</td>
+<td>+210</td>
+<td>🟢 Info</td>
+</tr>
+<tr>
+<td>.art mmap</td>
+<td>3,433</td>
+<td>3,457</td>
+<td>+24</td>
+<td>🟢 Info</td>
+</tr>
+<tr>
+<td>EGL mtrack</td>
+<td>8,211</td>
+<td>8,320</td>
+<td>+109</td>
+<td>🟢 Info</td>
+</tr>
+<tr>
+<td>GL mtrack</td>
+<td>12,238</td>
+<td>18,402</td>
+<td>+6,164</td>
+<td>🟡 Warning</td>
+</tr>
+<tr>
+<td>Unknown</td>
+<td>2,343</td>
+<td>2,478</td>
+<td>+135</td>
+<td>🟢 Info</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-objects">4. Objects 변화</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Baseline</th>
+<th>Regression</th>
+<th>변화량</th>
+<th>심각도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Views</td>
+<td>456</td>
+<td>900</td>
+<td>+444</td>
+<td>🟡 Warning</td>
+</tr>
+<tr>
+<td>Activities</td>
+<td>0</td>
+<td>2</td>
+<td>+2</td>
+<td>🟢 Info</td>
+</tr>
+<tr>
+<td>Local Binders</td>
+<td>225</td>
+<td>199</td>
+<td>-26</td>
+<td>🟢 Info</td>
+</tr>
+<tr>
+<td>Proxy Binders</td>
+<td>174</td>
+<td>101</td>
+<td>-73</td>
+<td>🟢 Info</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>이 보고서는 SystemUI Analyzer에 의해 자동 생성되었습니다.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -1040,10 +1423,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/Documents/", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "/Documents/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="/Documents/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
