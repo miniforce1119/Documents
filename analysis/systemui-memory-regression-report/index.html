@@ -814,6 +814,78 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. AI 원인 분석
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. AI 원인 분석">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 주요 변화 요약
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 원인 가설
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 조치 권고 (우선순위순)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 관련 서브시스템 조사 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-human-in-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 분석자 기록 (Human-in-the-loop)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1128,6 +1200,78 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. AI 원인 분석
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. AI 원인 분석">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 주요 변화 요약
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 원인 가설
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 조치 권고 (우선순위순)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 관련 서브시스템 조사 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-human-in-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 분석자 기록 (Human-in-the-loop)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1152,7 +1296,7 @@
 <p><strong>생성일시:</strong> 2026-04-26 14:47:24<br />
 <strong>Baseline:</strong> S948NKSU2AZDD (3회 평균)<br />
 <strong>Regression:</strong> S948NKSU2AZDE (3회 평균)<br />
-<strong>심각도:</strong> 🔴 Critical</p>
+<strong>심각도:</strong> <img alt="🔴" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f534.svg" title=":red_circle:" /> Critical</p>
 <hr />
 <h2 id="1">1. 전체 요약</h2>
 <table>
@@ -1182,6 +1326,13 @@
 </tr>
 </tbody>
 </table>
+<pre class="mermaid"><code>xychart-beta
+    title "메모리 사용량 비교 (KB)"
+    x-axis ["Total PSS", "Total RSS"]
+    y-axis "KB" 0 --&gt; 150000
+    bar [76009, 95011]
+    bar [109700, 137125]</code></pre>
+<hr />
 <h2 id="2-top-contributors">2. 메모리 증가 주요 원인 (Top Contributors)</h2>
 <table>
 <thead>
@@ -1199,38 +1350,46 @@
 <td>Java Heap</td>
 <td>+18,915</td>
 <td>+73.5%</td>
-<td>🔴 Critical</td>
+<td><img alt="🔴" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f534.svg" title=":red_circle:" /> Critical</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Dalvik Heap</td>
 <td>+16,447</td>
 <td>+73.5%</td>
-<td>🔴 Critical</td>
+<td><img alt="🔴" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f534.svg" title=":red_circle:" /> Critical</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Native Heap</td>
 <td>+10,787</td>
 <td>+70.8%</td>
-<td>🔴 Critical</td>
+<td><img alt="🔴" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f534.svg" title=":red_circle:" /> Critical</td>
 </tr>
 <tr>
 <td>4</td>
 <td>Graphics</td>
 <td>+6,274</td>
 <td>+30.7%</td>
-<td>🟡 Warning</td>
+<td><img alt="🟡" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e1.svg" title=":yellow_circle:" /> Warning</td>
 </tr>
 <tr>
 <td>5</td>
 <td>GL mtrack</td>
 <td>+6,164</td>
 <td>+50.4%</td>
-<td>🟡 Warning</td>
+<td><img alt="🟡" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e1.svg" title=":yellow_circle:" /> Warning</td>
 </tr>
 </tbody>
 </table>
+<pre class="mermaid"><code>pie title 메모리 증가 기여도
+    "Java Heap (+18,915)" : 18915
+    "Dalvik Heap (+16,447)" : 16447
+    "Native Heap (+10,787)" : 10787
+    "Graphics (+6,274)" : 6274
+    "GL mtrack (+6,164)" : 6164
+    "기타" : 1104</code></pre>
+<hr />
 <h2 id="3">3. 메모리 섹션별 상세 비교</h2>
 <table>
 <thead>
@@ -1248,66 +1407,73 @@
 <td>15,232</td>
 <td>26,019</td>
 <td>+10,787</td>
-<td>🔴 Critical</td>
+<td><img alt="🔴" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f534.svg" title=":red_circle:" /> Critical</td>
 </tr>
 <tr>
 <td>Dalvik Heap</td>
 <td>22,372</td>
 <td>38,819</td>
 <td>+16,447</td>
-<td>🔴 Critical</td>
+<td><img alt="🔴" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f534.svg" title=":red_circle:" /> Critical</td>
 </tr>
 <tr>
 <td>Dalvik Other</td>
 <td>3,425</td>
 <td>3,328</td>
 <td>-97</td>
-<td>🟢 Info</td>
+<td><img alt="🟢" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e2.svg" title=":green_circle:" /> Info</td>
 </tr>
 <tr>
 <td>Stack</td>
 <td>610</td>
 <td>521</td>
 <td>-89</td>
-<td>🟢 Info</td>
+<td><img alt="🟢" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e2.svg" title=":green_circle:" /> Info</td>
 </tr>
 <tr>
 <td>.so mmap</td>
 <td>8,143</td>
 <td>8,353</td>
 <td>+210</td>
-<td>🟢 Info</td>
+<td><img alt="🟢" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e2.svg" title=":green_circle:" /> Info</td>
 </tr>
 <tr>
 <td>.art mmap</td>
 <td>3,433</td>
 <td>3,457</td>
 <td>+24</td>
-<td>🟢 Info</td>
+<td><img alt="🟢" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e2.svg" title=":green_circle:" /> Info</td>
 </tr>
 <tr>
 <td>EGL mtrack</td>
 <td>8,211</td>
 <td>8,320</td>
 <td>+109</td>
-<td>🟢 Info</td>
+<td><img alt="🟢" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e2.svg" title=":green_circle:" /> Info</td>
 </tr>
 <tr>
 <td>GL mtrack</td>
 <td>12,238</td>
 <td>18,402</td>
 <td>+6,164</td>
-<td>🟡 Warning</td>
+<td><img alt="🟡" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e1.svg" title=":yellow_circle:" /> Warning</td>
 </tr>
 <tr>
 <td>Unknown</td>
 <td>2,343</td>
 <td>2,478</td>
 <td>+135</td>
-<td>🟢 Info</td>
+<td><img alt="🟢" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e2.svg" title=":green_circle:" /> Info</td>
 </tr>
 </tbody>
 </table>
+<pre class="mermaid"><code>xychart-beta
+    title "섹션별 메모리 비교 (KB)"
+    x-axis ["Native", "Dalvik", "DalvikOther", "Stack", ".so", ".art", "EGL", "GL", "Unknown"]
+    y-axis "KB" 0 --&gt; 42000
+    bar [15232, 22372, 3425, 610, 8143, 3433, 8211, 12238, 2343]
+    bar [26019, 38819, 3328, 521, 8353, 3457, 8320, 18402, 2478]</code></pre>
+<hr />
 <h2 id="4-objects">4. Objects 변화</h2>
 <table>
 <thead>
@@ -1325,33 +1491,160 @@
 <td>456</td>
 <td>900</td>
 <td>+444</td>
-<td>🟡 Warning</td>
+<td><img alt="🟡" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e1.svg" title=":yellow_circle:" /> Warning</td>
 </tr>
 <tr>
 <td>Activities</td>
 <td>0</td>
 <td>2</td>
 <td>+2</td>
-<td>🟢 Info</td>
+<td><img alt="🟢" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e2.svg" title=":green_circle:" /> Info</td>
 </tr>
 <tr>
 <td>Local Binders</td>
 <td>225</td>
 <td>199</td>
 <td>-26</td>
-<td>🟢 Info</td>
+<td><img alt="🟢" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e2.svg" title=":green_circle:" /> Info</td>
 </tr>
 <tr>
 <td>Proxy Binders</td>
 <td>174</td>
 <td>101</td>
 <td>-73</td>
-<td>🟢 Info</td>
+<td><img alt="🟢" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e2.svg" title=":green_circle:" /> Info</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p><em>이 보고서는 SystemUI Analyzer에 의해 자동 생성되었습니다.</em></p>
+<h2 id="5-ai">5. AI 원인 분석</h2>
+<div class="admonition danger">
+<p class="admonition-title">심각도: Critical — 즉시 조치 필요</p>
+<p>Total PSS가 44.3% 증가하여 Critical 수준입니다.</p>
+</div>
+<h3 id="51">5.1 주요 변화 요약</h3>
+<ul>
+<li><strong>메모리 전체:</strong> 76MB → 110MB (+34MB, +44.3%)</li>
+<li><strong>가장 큰 증가:</strong> Java Heap (+18.9MB), Dalvik Heap (+16.4MB), Native Heap (+10.8MB)</li>
+<li><strong>Objects 이상 징후:</strong> Views 456 → 900개 (+97.4%), Activities 0 → 2개</li>
+</ul>
+<h3 id="52">5.2 원인 가설</h3>
+<div class="admonition warning">
+<p class="admonition-title">가설 1: Activity Leak (신뢰도: 높음)</p>
+<p><strong>근거:</strong></p>
+<ul>
+<li>Activities가 0 → 2로 증가 (SystemUI는 일반적으로 Activity를 보유하지 않음)</li>
+<li>Views가 456 → 900으로 약 2배 증가 (Activity당 View tree가 추가된 것으로 추정)</li>
+<li>Java Heap과 Dalvik Heap이 동시에 ~73% 증가 (Activity에 바인딩된 객체들)</li>
+</ul>
+<p><strong>확인 방법:</strong></p>
+<ul>
+<li><code>dumpsys activity activities</code> 에서 SystemUI의 Activity stack 확인</li>
+<li>hprof 덤프 → Activity 인스턴스가 GC되지 않고 남아있는지 확인</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">가설 2: Bitmap/Drawable 캐시 과다 (신뢰도: 중간)</p>
+<p><strong>근거:</strong></p>
+<ul>
+<li>Native Heap +10.8MB (Bitmap 데이터는 Native 메모리에 할당)</li>
+<li>GL mtrack +6.2MB (하드웨어 가속 렌더링 버퍼 증가)</li>
+<li>Graphics 전체 +6.3MB</li>
+</ul>
+<p><strong>확인 방법:</strong></p>
+<ul>
+<li><code>dumpsys gfxinfo com.android.systemui</code>에서 텍스처 캐시 사이즈 확인</li>
+<li>새로 추가된 UI 요소(알림 패널, 퀵셋팅 아이콘 등)가 있는지 변경 이력 확인</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">가설 3: 알림 채널 또는 미디어 세션 누수 (신뢰도: 낮음)</p>
+<p><strong>근거:</strong></p>
+<ul>
+<li>Dalvik Other는 변화 없으나 Java Heap만 큰 폭 증가</li>
+<li>알림 관련 객체가 해제되지 않고 누적될 가능성</li>
+</ul>
+<p><strong>확인 방법:</strong></p>
+<ul>
+<li><code>dumpsys notification</code>에서 활성 알림 수 확인</li>
+<li><code>dumpsys media_session</code>에서 세션 누수 여부 확인</li>
+</ul>
+</div>
+<h3 id="53">5.3 조치 권고 (우선순위순)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">우선순위</th>
+<th>조치</th>
+<th>담당</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td>Activity Leak 확인 — <code>dumpsys activity</code> 및 hprof 분석</td>
+<td>SystemUI 담당자</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td>해당 빌드의 commit diff 확인 — AZDD → AZDE 간 SystemUI 변경사항</td>
+<td>빌드 담당자</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Bitmap 캐시 정책 확인 — 이미지 리소스 변경 여부</td>
+<td>UI/UX 담당자</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54">5.4 관련 서브시스템 조사 흐름</h3>
+<pre class="mermaid"><code>flowchart LR
+    A[메모리 증가 감지] --&gt; B{Activity Leak?}
+    B --&gt;|Yes| C[Activity stack 확인\nhprof 분석]
+    B --&gt;|No| D{Bitmap 캐시?}
+    D --&gt;|Yes| E[gfxinfo 확인\n리소스 변경 이력]
+    D --&gt;|No| F[알림/미디어 세션\n누수 확인]
+    C --&gt; G[원인 코드 특정\n&amp; 수정]
+    E --&gt; G
+    F --&gt; G</code></pre>
+<hr />
+<h2 id="6-human-in-the-loop">6. 분석자 기록 (Human-in-the-loop)</h2>
+<blockquote>
+<p>아래 영역은 분석 담당자가 직접 작성합니다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>실제 원인</strong></td>
+<td><em>(AI 가설 중 맞은 것, 또는 실제 원인 기록)</em></td>
+</tr>
+<tr>
+<td><strong>원인 코드 변경</strong></td>
+<td><em>(문제를 유발한 commit/CL 정보)</em></td>
+</tr>
+<tr>
+<td><strong>해결 조치</strong></td>
+<td><em>(어떻게 수정했는지)</em></td>
+</tr>
+<tr>
+<td><strong>추가 확인 데이터</strong></td>
+<td><em>(hprof, systrace 등 뭘 더 봤는지)</em></td>
+</tr>
+<tr>
+<td><strong>카테고리 태그</strong></td>
+<td><em>(예: View Leak, Bitmap Cache, Activity Leak 등)</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>이 보고서는 SystemUI Analyzer에 의해 자동 생성되었습니다.</em><br />
+<em>AI 분석: Claude (시뮬레이션) | 분석 소요: 0.8초</em></p>
 
 
 
