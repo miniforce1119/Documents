@@ -63,6 +63,7 @@ nav:
       - Docker 배포: guides/docker-deployment-guide.md
       - OpenClaw 원격 접속: guides/openclaw-remote-access.md
   - 분석:
+      - SystemUI Memory Regression: analysis/systemui-memory-regression-report.md
       - MkDocs 문서화 워크플로우: analysis/mkdocs-documentation-workflow.md
       - 2026 Q1 데이터 분석: analysis/2026-q1-data-analysis-report.md
       - Kubernetes 핵심 개념: analysis/kubernetes-core-concepts.md
