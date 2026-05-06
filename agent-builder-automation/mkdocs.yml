@@ -66,6 +66,14 @@ nav:
       - Agent Builder: guides/agent-builder.md
       - Docker 배포: guides/docker-deployment-guide.md
       - OpenClaw 원격 접속: guides/openclaw-remote-access.md
+      - 바이브 코딩 MkDocs 가이드: guides/vibe-coding-mkdocs-guide.md
+      - 강사용 시연 가이드: guides/instructor-demo-guide.md
+      - HW AI 워크숍:
+          - 워크숍 개요: guides/hw-ai-workshop/index.md
+          - "프로젝트 1: 엑셀 인포그래픽": guides/hw-ai-workshop/project1-infographic.md
+          - "프로젝트 2: NotebookLM 오디오": guides/hw-ai-workshop/project2-notebooklm.md
+          - "프로젝트 3: MKDocs 사이트": guides/hw-ai-workshop/project3-mkdocs.md
+          - "프로젝트 4: 텔레그램 봇": guides/hw-ai-workshop/project4-telegram-bot.md
   - 분석:
       - SystemUI Memory Regression: analysis/systemui-memory-regression-report.md
       - MkDocs 문서화 워크플로우: analysis/mkdocs-documentation-workflow.md
