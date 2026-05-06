@@ -14,9 +14,9 @@ AI에게 프롬프트로 코드를 요청해서, Google Sheets 기반의 **점�
 
 아래는 이 프로젝트에서 만들 시스템의 전체 구성도입니다.
 
-<iframe src="시스템_구성도.html" width="100%" height="800px" style="border: none; border-radius: 12px;"></iframe>
+<iframe src="../시스템_구성도.html" width="100%" height="800px" style="border: none; border-radius: 12px;"></iframe>
 
-[시스템 구성도를 새 탭에서 보기](시스템_구성도.html){ .md-button target="_blank" }
+[시스템 구성도를 새 탭에서 보기](../시스템_구성도.html){ .md-button target="_blank" }
 
 ---
 
@@ -124,7 +124,7 @@ Python에서 Google Sheets를 읽으려면 **서비스 계정**이 필요합니�
 
 아래 버튼을 클릭하여 샘플 엑셀 파일을 다운로드하세요.
 
-[점심메뉴_투표.xlsx 다운로드 :material-download:](점심메뉴_투표.xlsx){ .md-button .md-button--primary }
+[점심메뉴_투표.xlsx 다운로드 :material-download:](../점심메뉴_투표.xlsx){ .md-button .md-button--primary }
 
 1. [Google Drive](https://drive.google.com) 에 접속
 2. 다운로드한 `점심메뉴_투표.xlsx` 파일을 업로드
