@@ -1,102 +1,59 @@
-# Agent Builder Documentation
+# Tech Notes
 
-Agent Builder 자동화 시스템에 오신 것을 환영합니다! 🎉
-
-## 📚 소개
-
-이 문서 사이트는 **Agent Builder to MkDocs 자동화 시스템**으로 생성된 문서들을 모아놓은 곳입니다.
-
-### 🎯 주요 기능
-
-- ✅ **자동 문서 생성**: Agent Builder 결과를 자동으로 파싱
-- ✅ **카테고리별 정리**: 분석, 가이드, 리포트 등으로 분류
-- ✅ **Git 연동**: 자동 커밋 및 푸시
-- ✅ **실시간 미리보기**: MkDocs로 즉시 확인
-
-## 📂 문서 카테고리
-
-### 📊 분석 문서
-프로젝트 분석, 데이터 분석 관련 문서
-
-- [MkDocs Documentation Workflow](analysis/mkdocs-documentation-workflow.md)
-
-### 📖 가이드
-사용 가이드, 튜토리얼 문서
-
-- [Agent Builder 자동화](guides/agent-builder.md)
-
-## 🚀 시작하기
-
-### 새 문서 생성 방법
-
-```bash
-# 1. 테스트 문서 생성
-python create_test_doc.py "문서 제목" [카테고리]
-
-# 2. 문서 저장 및 배포
-python export_agent_to_docs.py --input test_문서-제목.txt --category guides
-```
-
-### 실시간 미리보기
-
-```bash
-# MkDocs 서버 시작
-mkdocs serve
-
-# http://localhost:8000 에서 확인
-```
-
-## 🔧 사용 가능한 카테고리
-
-| 카테고리 | 설명 | 예시 |
-|---------|------|------|
-| `analysis` | 분석 문서 | 데이터 분석, 프로젝트 분석 |
-| `guides` | 가이드 | 사용법, 튜토리얼 |
-| `reports` | 리포트 | 보고서, 결과 문서 |
-| `concepts` | 개념 | 용어 정리, 개념 설명 |
-
-## 📝 문서 작성 형식
-
-Agent Builder는 다음 형식으로 출력합니다:
-
-```
-TITLE:
-문서 제목
-
-FILENAME:
-파일명-kebab-case
-
-CONTENT:
-# Markdown 형식의 내용
-...
-```
-
-## 🎨 테마 및 기능
-
-이 사이트는 **Material for MkDocs** 테마를 사용합니다.
-
-### 주요 기능
-- 🌓 다크 모드 지원
-- 🔍 실시간 검색
-- 📱 반응형 디자인
-- 💻 코드 하이라이팅
-- 📑 탭 네비게이션
-
-## 🔗 관련 링크
-
-- [GitHub Repository](https://github.com/miniforce1119/Documents)
-- [MkDocs 공식 문서](https://www.mkdocs.org/)
-- [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
-
-## 📊 통계
-
-현재 문서 수: **2개**
-
-- 분석 문서: 1개
-- 가이드: 1개
+기술 문서, 교육 자료, 가이드를 모아놓은 개인 문서 사이트입니다.
 
 ---
 
-**마지막 업데이트**: 2026-03-07
+## :material-school: 강의 자료
 
-**자동 생성**: Agent Builder Automation System
+| 제목 | 설명 |
+|------|------|
+| [AI 기초](courses/ai-fundamentals.md) | AI/ML/DL 기본 개념 정리 |
+
+---
+
+## :material-book-open-variant: 가이드
+
+### 워크숍
+
+| 제목 | 설명 |
+|------|------|
+| [HW AI 워크숍](guides/hw-ai-workshop/index.md) | 모바일 HW 파트장 대상 AI 활용 워크숍 (4개 프로젝트) |
+| [바이브 코딩 MkDocs 가이드](guides/vibe-coding-mkdocs-guide.md) | AI와 대화로 문서 사이트 만들기 |
+| [강사용 시연 가이드](guides/instructor-demo-guide.md) | 교육 시연 진행 노트 |
+
+### 기술 가이드
+
+| 제목 | 설명 |
+|------|------|
+| [Docker 배포](guides/docker-deployment-guide.md) | Docker 컨테이너 배포 가이드 |
+| [OpenClaw 원격 접속](guides/openclaw-remote-access.md) | OpenClaw 원격 접속 설정 |
+| [Agent Builder](guides/agent-builder.md) | Agent Builder 자동화 가이드 |
+
+---
+
+## :material-chart-bar: 분석
+
+| 제목 | 설명 |
+|------|------|
+| [SystemUI Memory Regression](analysis/systemui-memory-regression-report.md) | SystemUI 메모리 분석 리포트 |
+| [MkDocs 문서화 워크플로우](analysis/mkdocs-documentation-workflow.md) | 문서 자동화 워크플로우 분석 |
+| [2026 Q1 데이터 분석](analysis/2026-q1-data-analysis-report.md) | 2026년 1분기 데이터 분석 |
+| [Kubernetes 핵심 개념](analysis/kubernetes-core-concepts.md) | K8s 핵심 개념 정리 |
+| [RESTful API 설계](analysis/restful-api-design-guide.md) | REST API 설계 가이드 |
+
+---
+
+## :material-lightbulb: 개념
+
+| 제목 | 설명 |
+|------|------|
+| [Python Best Practices 2026](concepts/python-best-practices-2026.md) | Python 개발 모범 사례 |
+
+---
+
+## :material-presentation: 프레젠테이션
+
+| 제목 | 설명 |
+|------|------|
+| [2026 Tech Trends & Beyond](presentations.md) | 2026 기술 트렌드 발표 자료 |
